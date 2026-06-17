@@ -537,7 +537,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 <!-- HERO -->
 <main id="main">
 <section class="hero">
-  <image-slot id="vf-home-hero" shape="rect" fit="cover" placeholder="Drop your hero image — the opening shot of the site"></image-slot>
+  <video autoplay muted loop playsinline style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+    <source src="project/images/hero-video.mp4" type="video/mp4">
+  </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-inner">
