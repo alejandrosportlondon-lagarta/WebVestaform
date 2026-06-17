@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  ::selection { background: #bd562e; color: #fdfaf3; }
+  @keyframes vfUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  @keyframes vfFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes vfGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes vfBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  @keyframes vfPanel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes vfFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes vfShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  @keyframes vfWordIn { 0% { opacity: 0; transform: translateY(0.42em) rotate(1.5deg); filter: blur(3px); } 100% { opacity: 1; transform: none; filter: blur(0); } }
+  image-slot { display: block; }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="font-family: 'Schibsted Grotesk', system-ui, sans-serif; background: #efe9dd; color: #221c14; min-height: 100vh; overflow-x: clip; -webkit-font-smoothing: antialiased;">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(239,233,221,0.82); border-bottom: 1px solid #ddd3c0;">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #221c14;">
+        <span style="width: 22px; height: 22px; border: 1.5px solid #221c14; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center;">
+          <span style="width: 8px; height: 8px; background: {{ accent }}; border-radius: 1px;"></span>
+        </span>
+        <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em;">Vestaform</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 30px;">
+        <a href="#model" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.approach }}</a>
+        <a href="#os" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.os }}</a>
+        <a href="#industries" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.industries }}</a>
+        <a href="Vestaform%20-%20Design.dc.html" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.design }}</a>
+        <a href="#work" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.work }}</a>
+        <a href="#about" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.about }}</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <div style="display: flex; align-items: center; gap: 2px; font-size: 13px; font-weight: 600;">
+          <button onClick="{{ setEn }}" style="{{ enStyle }}">EN</button>
+          <span style="color: #c3b9a4;">/</span>
+          <button onClick="{{ setEs }}" style="{{ esStyle }}">ES</button>
+        </div>
+        <a href="#contact" style="text-decoration: none; padding: 9px 18px; border-radius: 3px; font-size: 14px; font-weight: 600;" style="{{ ctaSmallStyle }}" style-hover="opacity: 0.9;">{{ t.nav.cta }}</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- FULL-BLEED HERO (opening) -->
+  <section id="top" style="position: relative; width: 100%; height: min(88vh, 800px); min-height: 520px; overflow: hidden; background: linear-gradient(135deg, #e4dac6, #d2c6ad);">
+    <image-slot id="vf-home-hero" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop your hero image — the opening shot of the site"></image-slot>
+    <div style="position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(to top, rgba(18,12,7,0.76) 0%, rgba(18,12,7,0.34) 42%, rgba(18,12,7,0.06) 70%, rgba(18,12,7,0.12) 100%);"></div>
+    <div style="position: absolute; inset: 0; z-index: 4; display: flex; align-items: flex-end; pointer-events: none;">
+      <div style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 0 32px clamp(48px, 7vh, 88px);">
+        <div style="display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(253,250,243,0.86); animation: vfUp 0.7s cubic-bezier(0.2,0.7,0.2,1) both;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ accent }};"></span>
+          {{ t.hero.eyebrow }}
+        </div>
+        <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(44px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.015em; color: #fdfaf3; margin: 18px 0 0; max-width: 15ch; text-shadow: 0 2px 34px rgba(0,0,0,0.28); animation: vfUp 0.8s cubic-bezier(0.2,0.7,0.2,1) 0.06s both;">
+{{ t.hero.h1pre }}{{ rotatingWord }}{{ t.hero.h1post }}
+        </h1>
+        <p style="max-width: 54ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.55; color: rgba(253,250,243,0.86); margin: 22px 0 0; text-shadow: 0 1px 16px rgba(0,0,0,0.3); animation: vfUp 0.8s cubic-bezier(0.2,0.7,0.2,1) 0.14s both;">{{ t.hero.sub }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; pointer-events: auto; animation: vfUp 0.8s cubic-bezier(0.2,0.7,0.2,1) 0.2s both;">
+          <a href="#contact" style="text-decoration: none; padding: 14px 26px; border-radius: 3px; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; gap: 9px;" style="{{ ctaStyle }}" style-hover="opacity: 0.9; transform: translateY(-1px);">
+            {{ t.hero.cta1 }} <span style="font-size: 16px;">→</span>
+          </a>
+          <a href="#os" style="text-decoration: none; padding: 14px 24px; border-radius: 3px; font-size: 15px; font-weight: 600; color: #fdfaf3; border: 1px solid rgba(253,250,243,0.5); background: rgba(253,250,243,0.08); backdrop-filter: blur(4px);" style-hover="background: rgba(253,250,243,0.18);">{{ t.hero.cta2 }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT + OS SHOWCASE -->
+  <section id="intro" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 100px) 32px 40px; position: relative;">
+    <!-- PROJECT + OS SHOWCASE -->
+    <div style="position: relative; display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 0; animation: vfUp 0.9s cubic-bezier(0.2,0.7,0.2,1) 0.28s both;">
+      <!-- image placeholder -->
+      <div style="position: relative; height: clamp(280px, 42vw, 520px); border-radius: 6px; overflow: hidden; background: linear-gradient(135deg, #e2d8c4, #d8ccb4); border: 1px solid #d2c7b0;">
+        <img src="images/home-hero-v2.png" alt="Completed Vestaform space" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(115deg, rgba(255,255,255,0.18), transparent 40%); pointer-events: none;"></div>
+        <div style="position: absolute; left: 18px; top: 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.5); padding: 5px 10px; border-radius: 20px; backdrop-filter: blur(4px);">{{ t.hero.imgTag }}</div>
+      </div>
+
+      <!-- OS DASHBOARD -->
+      <div style="position: absolute; right: clamp(8px, 3vw, 40px); bottom: -36px; width: clamp(300px, 40vw, 470px); background: #1b1611; border-radius: 10px; border: 1px solid #3a2e22; box-shadow: 0 30px 60px -20px rgba(40,25,12,0.5), 0 8px 20px -8px rgba(40,25,12,0.4); overflow: hidden; animation: vfFloat 7s ease-in-out infinite;">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border-bottom: 1px solid #2e2419;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ accent }};"></span>
+            <span style="font-size: 12.5px; font-weight: 600; color: #ece4d6;">Vestaform OS</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: #7fb98e;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #58c873; animation: vfBlink 1.6s ease-in-out infinite;"></span>
+            {{ t.dash.live }}
+          </div>
+        </div>
+        <div style="padding: 16px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #8a7d6a;">{{ t.dash.project }}</div>
+          <div style="font-size: 17px; font-weight: 600; color: #f3ece0; margin-top: 4px;">Madrid Flagship</div>
+
+          <!-- phase timeline -->
+          <div style="display: flex; gap: 6px; margin-top: 16px;">
+            <div style="flex: 1;">
+              <div style="height: 4px; border-radius: 2px; background: {{ accent }}; transform-origin: left; animation: vfGrow 0.9s ease-out 0.4s both;"></div>
+              <div style="font-size: 10px; color: #b6a892; margin-top: 6px;">{{ t.dash.strategy }}</div>
+            </div>
+            <div style="flex: 1;">
+              <div style="height: 4px; border-radius: 2px; background: {{ accent }}; transform-origin: left; animation: vfGrow 0.9s ease-out 0.6s both;"></div>
+              <div style="font-size: 10px; color: #b6a892; margin-top: 6px;">{{ t.dash.design }}</div>
+            </div>
+            <div style="flex: 1;">
+              <div style="height: 4px; border-radius: 2px; background: linear-gradient(90deg, {{ accent }} 60%, #3a2e22 60%); transform-origin: left; animation: vfGrow 0.9s ease-out 0.8s both;"></div>
+              <div style="font-size: 10px; color: #f3ece0; font-weight: 600; margin-top: 6px;">{{ t.dash.procurement }}</div>
+            </div>
+            <div style="flex: 1;">
+              <div style="height: 4px; border-radius: 2px; background: #3a2e22;"></div>
+              <div style="font-size: 10px; color: #7a6e5c; margin-top: 6px;">{{ t.dash.install }}</div>
+            </div>
+          </div>
+
+          <!-- budget + delivery cards -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px;">
+            <div style="background: #241d15; border: 1px solid #2e2419; border-radius: 7px; padding: 12px;">
+              <div style="font-size: 10.5px; color: #8a7d6a;">{{ t.dash.budget }}</div>
+              <div style="font-size: 19px; font-weight: 700; color: #f3ece0; margin-top: 3px;">68<span style="font-size: 12px; color: #8a7d6a;">%</span></div>
+              <div style="height: 5px; border-radius: 3px; background: #2e2419; margin-top: 8px; overflow: hidden;">
+                <div style="height: 100%; width: 68%; background: {{ accent }}; transform-origin: left; animation: vfGrow 1s ease-out 0.9s both;"></div>
+              </div>
+            </div>
+            <div style="background: #241d15; border: 1px solid #2e2419; border-radius: 7px; padding: 12px;">
+              <div style="font-size: 10.5px; color: #8a7d6a;">{{ t.dash.delivery }}</div>
+              <div style="font-size: 14px; font-weight: 600; color: #f3ece0; margin-top: 5px;">{{ t.dash.deliveryVal }}</div>
+              <div style="display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; font-size: 10.5px; font-weight: 600; color: #7fb98e; background: rgba(88,200,115,0.12); padding: 3px 7px; border-radius: 20px;">
+                <span style="width: 5px; height: 5px; border-radius: 50%; background: #58c873;"></span>{{ t.dash.onTrack }}
+              </div>
+            </div>
+          </div>
+
+          <!-- photo updates row -->
+          <div style="font-size: 10.5px; color: #8a7d6a; margin-top: 16px;">{{ t.dash.updates }}</div>
+          <div style="display: flex; gap: 7px; margin-top: 8px;">
+            <div style="flex: 1; height: 46px; border-radius: 5px; background: linear-gradient(135deg, #3a2e22, #2a2117);"></div>
+            <div style="flex: 1; height: 46px; border-radius: 5px; background: linear-gradient(135deg, #463524, #2a2117);"></div>
+            <div style="flex: 1; height: 46px; border-radius: 5px; background: linear-gradient(90deg, #2a2117 25%, #3a2e22 50%, #2a2117 75%); background-size: 200% 100%; animation: vfShimmer 2.2s linear infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECLARATIVE BAND -->
+  <section style="margin-top: 96px; border-top: 1px solid #ddd3c0; border-bottom: 1px solid #ddd3c0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 64px 32px;">
+      <p style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -0.02em; margin: 0; max-width: 18ch;">
+        {{ t.declarative.a }} <span style="font-style: italic; color: {{ accent }};">{{ t.declarative.b }}</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- MODEL (tabs) -->
+  <section id="model" style="max-width: 1240px; margin: 0 auto; padding: 96px 32px;">
+    <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+      <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.model.kicker }}
+    </div>
+    <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -0.01em; margin: 16px 0 0; max-width: 16ch;">{{ t.model.title }}</h2>
+    <p style="max-width: 60ch; font-size: 17px; line-height: 1.6; color: #4a4133; margin: 18px 0 0;">{{ t.model.intro }}</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 40px; border-bottom: 1px solid #ddd3c0;">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="4">
+        <button onClick="{{ tab.onClick }}" style="background: transparent; border: none; cursor: pointer; padding: 12px 18px 14px; position: relative; display: flex; align-items: baseline; gap: 8px; font-family: 'Schibsted Grotesk', sans-serif;">
+          <span style="font-size: 11px; font-weight: 600;" style="{{ tab.numStyle }}">{{ tab.n }}</span>
+          <span style="font-size: 17px; font-weight: 600;" style="{{ tab.labelStyle }}">{{ tab.label }}</span>
+          <span style="position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: {{ accent }}; transform-origin: left; transition: transform 0.3s cubic-bezier(0.2,0.7,0.2,1);" style="{{ tab.barStyle }}"></span>
+        </button>
+      </sc-for>
+    </div>
+
+    <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="1">
+      <sc-if value="{{ tab.isActive }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; padding-top: 40px; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both;">
+          <div>
+            <div style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(26px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #221c14;">{{ tab.label }}</div>
+            <p style="font-size: 18px; line-height: 1.6; color: #4a4133; margin: 16px 0 0; max-width: 44ch;">{{ tab.blurb }}</p>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <sc-for list="{{ tab.services }}" as="s" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid #ddd3c0;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: {{ accent }}; flex: none;"></span>
+                <span style="font-size: 16.5px; font-weight: 500; color: #2a2318;">{{ s }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </sc-for>
+  </section>
+
+  <!-- VESTAFORM OS -->
+  <section id="os" style="max-width: 1240px; margin: 0 auto; padding: 32px 32px 96px;">
+    <div style="background: #1b1611; border-radius: 14px; padding: clamp(36px, 5vw, 72px); color: #ece4d6; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 100% 40px; opacity: 0.6;"></div>
+      <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #b6a892;">
+            <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.os.kicker }}
+          </div>
+          <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 54px); line-height: 1.04; margin: 16px 0 0; color: #f6efe3;">{{ t.os.title }}</h2>
+          <p style="font-size: 17px; line-height: 1.6; color: #c3b6a2; margin: 18px 0 0; max-width: 44ch;">{{ t.os.sub }}</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-top: 32px;">
+            <sc-for list="{{ t.os.features }}" as="f" hint-placeholder-count="6">
+              <div style="display: flex; align-items: center; gap: 11px; padding: 10px 0; border-bottom: 1px solid #2e2419;">
+                <span style="color: {{ accent }}; font-size: 13px;">◆</span>
+                <span style="font-size: 14.5px; color: #ddd1bf;">{{ f }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background: #221b13; border: 1px solid #3a2e22; border-radius: 10px; padding: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid #2e2419;">
+            <span style="font-size: 13px; font-weight: 600; color: #f3ece0;">{{ t.dash.projects }}</span>
+            <span style="font-size: 11px; color: #8a7d6a;">{{ t.dash.thisQuarter }}</span>
+          </div>
+          <sc-for list="{{ osRows }}" as="r" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid #2e2419;">
+              <span style="width: 8px; height: 8px; border-radius: 2px; background: {{ r.dot }}; flex: none;"></span>
+              <div style="flex: 1; min-width: 0;">
+                <div style="font-size: 13.5px; font-weight: 500; color: #ece4d6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ r.name }}</div>
+                <div style="font-size: 11px; color: #8a7d6a;">{{ r.meta }}</div>
+              </div>
+              <div style="width: 76px; flex: none;">
+                <div style="height: 5px; border-radius: 3px; background: #2e2419; overflow: hidden;">
+                  <div style="height: 100%; background: {{ accent }}; transform-origin: left;" style="{{ r.barStyle }}"></div>
+                </div>
+              </div>
+              <span style="font-size: 12px; font-weight: 600; color: #c3b6a2; width: 34px; text-align: right;">{{ r.pct }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section style="background: #221c14; color: #ece4d6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px;">
+      <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #a99c87;">
+        <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.ai.kicker }}
+      </div>
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-top: 16px;">
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.6vw, 62px); line-height: 1.02; margin: 0; max-width: 16ch; color: #f6efe3;">{{ t.ai.title }}</h2>
+        <p style="font-size: 16.5px; line-height: 1.6; color: #b8ab97; margin: 0;">{{ t.ai.sub }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px;">
+        <sc-for list="{{ t.ai.items }}" as="item" hint-placeholder-count="6">
+          <div style="background: #2c241a; border: 1px solid #3a2e22; border-radius: 10px; padding: 26px 24px; transition: transform 0.25s, border-color 0.25s;" style-hover="transform: translateY(-3px); border-color: #54422c;">
+            <div style="width: 34px; height: 34px; border-radius: 7px; background: rgba(189,86,46,0.16); display: flex; align-items: center; justify-content: center; color: {{ accent }}; font-size: 15px;">✦</div>
+            <div style="font-size: 17px; font-weight: 600; color: #f3ece0; margin-top: 18px;">{{ item.t }}</div>
+            <div style="font-size: 14px; line-height: 1.5; color: #a99c87; margin-top: 7px;">{{ item.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries" style="max-width: 1240px; margin: 0 auto; padding: 96px 32px;">
+    <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+      <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.industries.kicker }}
+    </div>
+    <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02; margin: 16px 0 44px; max-width: 18ch;">{{ t.industries.title }}</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+      <sc-for list="{{ industryCards }}" as="ind" hint-placeholder-count="5">
+        <div style="border-radius: 8px; overflow: hidden; border: 1px solid #d8cdb8; background: #f6f1e7;" style-hover="border-color: #c2b599;">
+          <div style="height: 190px; position: relative; overflow: hidden; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+            <div style="{{ ind.imgStyle }}"></div>
+            <div style="position: absolute; left: 14px; top: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.5); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ ind.name }}</div>
+          </div>
+          <div style="padding: 20px 22px 24px;">
+            <div style="font-size: 19px; font-weight: 600; color: #221c14;">{{ ind.name }}</div>
+            <div style="font-size: 14.5px; line-height: 1.5; color: #6a6151; margin-top: 6px;">{{ ind.d }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section id="work" style="border-top: 1px solid #ddd3c0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center;">
+        <div style="position: relative; height: clamp(320px, 40vw, 480px); border-radius: 8px; overflow: hidden; background: linear-gradient(135deg, #ddd2bc, #cdbfa3); border: 1px solid #cdbfa3;">
+          <img src="images/dental-company.png" alt="{{ t.case.client }} clinic reception" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+          <div style="position: absolute; left: 18px; top: 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.5); padding: 5px 10px; border-radius: 20px; backdrop-filter: blur(4px);">{{ t.case.client }}</div>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+            <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.case.kicker }}
+          </div>
+          <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(30px, 3.8vw, 50px); line-height: 1.04; margin: 16px 0 0; max-width: 18ch;">{{ t.case.title }}</h2>
+          <p style="font-size: 17px; line-height: 1.6; color: #4a4133; margin: 18px 0 0; max-width: 48ch;">{{ t.case.body }}</p>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 34px; padding-top: 30px; border-top: 1px solid #ddd3c0;">
+            <sc-for list="{{ t.case.metrics }}" as="m" hint-placeholder-count="4">
+              <div>
+                <div style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1; letter-spacing: -0.02em; color: {{ accent }};">{{ m.n }}</div>
+                <div style="font-size: 12.5px; line-height: 1.35; color: #6a6151; margin-top: 8px;">{{ m.l }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-style: italic; font-size: 22px; color: #2a2318; margin: 32px 0 0;">"{{ t.case.quote }}"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY (comparison) -->
+  <section id="about" style="background: #e7decb;">
+    <div>
+      <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px;">
+        <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+          <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.why.kicker }}
+        </div>
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02; margin: 16px 0 44px; max-width: 16ch;">{{ t.why.title }}</h2>
+        <div style="border-radius: 10px; overflow: hidden; border: 1px solid #d6cab1;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; background: #1b1611;">
+            <div style="padding: 18px 26px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #9a8d77;">{{ t.why.col1 }}</div>
+            <div style="padding: 18px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #f3ece0; display: flex; align-items: center; gap: 9px;">
+              <span style="width: 16px; height: 16px; border-radius: 4px; background: {{ accent }}; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; color: #fff;">◆</span>{{ t.why.col2 }}
+            </div>
+          </div>
+          <sc-for list="{{ t.why.rows }}" as="row" hint-placeholder-count="5">
+            <div style="display: grid; grid-template-columns: 1fr 1fr;">
+              <div style="padding: 20px 26px; background: #f3ede1; border-top: 1px solid #e0d6c2; color: #8a7f6c; font-size: 16px; display: flex; align-items: center; gap: 12px;">
+                <span style="color: #c4b9a3; font-size: 15px;">✕</span>{{ row.trad }}
+              </div>
+              <div style="padding: 20px 26px; background: #faf6ec; border-top: 1px solid #e0d6c2; color: #221c14; font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px;" style-hover="background: #fffdf7;">
+                <span style="color: {{ accent }}; font-size: 15px;">✓</span>{{ row.vesta }}
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: 96px 32px; text-align: center;">
+    <div style="display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+      <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.vision.kicker }}<span style="width: 22px; height: 1px; background: {{ accent }};"></span>
+    </div>
+    <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(36px, 5.4vw, 76px); line-height: 1.0; letter-spacing: -0.01em; margin: 22px auto 0; max-width: 17ch;">{{ t.vision.title }}</h2>
+    <p style="font-size: 18px; line-height: 1.6; color: #4a4133; margin: 24px auto 0; max-width: 56ch;">{{ t.vision.body }}</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 36px;">
+      <sc-for list="{{ t.vision.pills }}" as="p" hint-placeholder-count="5">
+        <span style="padding: 9px 20px; border: 1px solid #c9bfa9; border-radius: 30px; font-size: 14.5px; font-weight: 500; color: #2a2318; background: #f3ede1;">{{ p }}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="max-width: 1240px; margin: 0 auto; padding: 0 32px 96px;">
+    <div style="background: #1b1611; border-radius: 14px; padding: clamp(48px, 7vw, 96px); text-align: center; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 0%, rgba(189,86,46,0.18), transparent 60%);"></div>
+      <div style="position: relative;">
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.6vw, 60px); line-height: 1.04; color: #f6efe3; margin: 0 auto; max-width: 18ch;">{{ t.cta.title }}</h2>
+        <p style="font-size: 18px; line-height: 1.6; color: #b8ab97; margin: 20px auto 0; max-width: 46ch;">{{ t.cta.sub }}</p>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-top: 34px; padding: 16px 32px; border-radius: 4px; font-size: 16px; font-weight: 600;" style="{{ ctaStyle }}" style-hover="opacity: 0.92; transform: translateY(-1px);">{{ t.cta.btn }} <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid #ddd3c0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 56px 32px;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start;">
+        <div style="max-width: 30ch;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 22px; height: 22px; border: 1.5px solid #221c14; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center;">
+              <span style="width: 8px; height: 8px; background: {{ accent }}; border-radius: 1px;"></span>
+            </span>
+            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em;">Vestaform</span>
+          </div>
+          <p style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-style: italic; font-size: 20px; line-height: 1.3; color: #4a4133; margin: 18px 0 0;">{{ t.footer.tag }}</p>
+        </div>
+        <div style="display: flex; gap: 26px;">
+          <a href="#model" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.approach }}</a>
+          <a href="#os" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.os }}</a>
+          <a href="#industries" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.industries }}</a>
+          <a href="Vestaform%20-%20Design.dc.html" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.design }}</a>
+          <a href="#work" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.work }}</a>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 44px; padding-top: 22px; border-top: 1px solid #ddd3c0; font-size: 13px; color: #8c8170;">
+        <span>© 2026 Vestaform. {{ t.footer.rights }}</span>
+        <span>Madrid · España</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#31633b&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;pageBg&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { lang: 'en', active: 0, wordIdx: 0 };
+
+  rootRef = React.createRef();
+  _applyBg() { const el = this.rootRef.current; if (el) el.style.background = this.props.pageBg || '#efe9dd'; }
+  componentDidUpdate() { this._applyBg(); }
+  componentDidMount() {
+    this._applyBg();
+    this._wordTimer = setInterval(() => {
+      const words = (this.state.lang === 'es' ? Component.ES : Component.EN).hero.words;
+      this.setState(s => ({ wordIdx: (s.wordIdx + 1) % words.length }));
+    }, 2400);
+  }
+  componentWillUnmount() { clearInterval(this._wordTimer); }
+
+  static EN = {
+    nav: { approach: 'Approach', os: 'Vestaform OS', industries: 'Industries', design: 'Vestaform Design', work: 'Work', about: 'Why us', cta: 'Book a Discovery Call' },
+    hero: {
+      eyebrow: 'Workplace · Hospitality · Commercial',
+      h1pre: 'We create spaces where people ', h1post: ' better.',
+      words: ['perform', 'focus', 'connect', 'thrive', 'belong'],
+      sub: 'From workplace strategy and design to procurement, project management and installation — Vestaform delivers exceptional environments for ambitious companies.',
+      cta1: 'Book a Discovery Call', cta2: 'See how it works',
+      imgTag: 'Completed space', imgHint: 'Add your project photo'
+    },
+    dash: {
+      live: 'Live', project: 'Active project', strategy: 'Strategy', design: 'Design', procurement: 'Procurement', install: 'Install',
+      budget: 'Budget used', delivery: 'Next delivery', deliveryVal: 'Tue · 14:00 · Bay 3', onTrack: 'On track', updates: 'Latest photo updates',
+      projects: 'Live projects', thisQuarter: 'This quarter'
+    },
+    declarative: { a: 'We don\u2019t sell furniture.', b: 'We deliver environments.' },
+    model: {
+      kicker: 'The model', title: 'One partner, the entire journey.',
+      intro: 'Architects design. Suppliers sell. Contractors execute. Nobody owns the whole journey \u2014 Vestaform does, from concept to completion.',
+      tabs: [
+        { n: '01', label: 'Strategy', blurb: 'We help organizations define how people work, collaborate and experience their spaces.', services: ['Workplace Strategy', 'Space Planning', 'Occupancy Analysis', 'Workplace Transformation'] },
+        { n: '02', label: 'Design', blurb: 'Beautiful, functional environments aligned with your business objectives.', services: ['Interior Design', 'Workplace Design', 'Hospitality Design', 'Brand Integration', 'Furniture Specification'] },
+        { n: '03', label: 'Delivery', blurb: 'We manage every detail, from procurement to installation.', services: ['Procurement', 'Supplier Management', 'Project Management', 'Logistics', 'Installation'] },
+        { n: '04', label: 'Technology', blurb: 'A digital layer connecting clients, suppliers and projects in real time.', services: ['Real-time Dashboard', 'Delivery Tracking', 'Budget Control', 'Documentation', 'Installation Progress'] }
+      ]
+    },
+    os: {
+      kicker: 'Vestaform OS\u2122', title: 'The operating system for your project.',
+      sub: 'A single digital layer connecting clients, suppliers and projects \u2014 so every decision, budget and delivery is visible in real time.',
+      features: ['Real-time dashboard', 'Delivery tracking', 'Budget control', 'Documentation', 'Photo updates', 'Installation progress']
+    },
+    ai: {
+      kicker: 'Project intelligence', title: 'Human expertise, accelerated by AI.',
+      sub: 'Vestaform pairs specialist teams with AI to accelerate planning, sourcing and execution. AI as an enhancer \u2014 never the product.',
+      items: [
+        { t: 'Furniture specification', d: 'AI-assisted specs matched to brief and budget.' },
+        { t: 'Supplier matching', d: 'The right suppliers, surfaced instantly.' },
+        { t: 'Budget analysis', d: 'Automated cost modelling and alerts.' },
+        { t: 'Risk identification', d: 'Flag delays before they happen.' },
+        { t: 'Documentation assistant', d: 'Every drawing and approval, organised.' },
+        { t: 'Inspiration generation', d: 'On-brief design directions in seconds.' }
+      ]
+    },
+    industries: {
+      kicker: 'Industries', title: 'Environments for how people work and gather.',
+      items: [
+        { name: 'Workplace', d: 'Corporate offices and headquarters.' },
+        { name: 'Hospitality', d: 'Hotels, restaurants and guest experiences.' },
+        { name: 'Healthcare', d: 'Clinics and care environments.' },
+        { name: 'Education', d: 'Learning and collaboration spaces.' },
+        { name: 'Commercial', d: 'Retail and customer-facing spaces.' }
+      ]
+    },
+    case: {
+      kicker: 'Case study', client: 'Dental Company', title: 'Scaling a national clinic network across Spain.',
+      body: 'A multi-site rollout delivered as one programme \u2014 designed, sourced, managed and installed clinic by clinic, with full visibility at every step.',
+      metrics: [ { n: '24', l: 'Clinics delivered' }, { n: '18k', l: 'Products sourced' }, { n: '\u20ac6.4M', l: 'Budget managed' }, { n: '98%', l: 'On-time delivery' } ],
+      quote: 'Clients buy outcomes, not furniture.'
+    },
+    why: {
+      kicker: 'Why Vestaform', title: 'Not a studio. A delivery partner.', col1: 'Traditional studio', col2: 'Vestaform',
+      rows: [
+        { trad: 'Designs spaces', vesta: 'Designs and delivers spaces' },
+        { trad: 'Multiple suppliers', vesta: 'Single point of contact' },
+        { trad: 'Limited visibility', vesta: 'Real-time project tracking' },
+        { trad: 'Manual coordination', vesta: 'Technology-enabled workflows' },
+        { trad: 'Ends at installation', vesta: 'Long-term partnership' }
+      ]
+    },
+    vision: {
+      kicker: 'The vision', title: 'The operating system for physical spaces.',
+      body: 'Not another design studio. The platform companies use to design, procure, manage, track and operate their environments \u2014 across Europe.',
+      pills: ['Design', 'Procure', 'Manage', 'Track', 'Operate']
+    },
+    cta: { title: 'Let\u2019s build the space your business deserves.', sub: 'Tell us where you\u2019re headed. We\u2019ll show you how Vestaform gets you there.', btn: 'Book a Discovery Call' },
+    footer: { tag: 'We don\u2019t sell furniture. We deliver environments.', rights: 'All rights reserved.' }
+  };
+
+  static ES = {
+    nav: { approach: 'Enfoque', os: 'Vestaform OS', industries: 'Sectores', design: 'Vestaform Design', work: 'Proyectos', about: 'Por qu\u00e9', cta: 'Reserva una llamada' },
+    hero: {
+      eyebrow: 'Oficinas · Hosteler\u00eda · Comercial',
+      h1pre: 'Creamos espacios donde las personas ', h1post: ' mejor.',
+      words: ['rinden', 'colaboran', 'se concentran', 'prosperan', 'conectan'],
+      sub: 'Desde la estrategia y el dise\u00f1o de espacios hasta la compra, la gesti\u00f3n de proyectos y la instalaci\u00f3n: Vestaform entrega entornos excepcionales para empresas ambiciosas.',
+      cta1: 'Reserva una llamada', cta2: 'Descubre c\u00f3mo funciona',
+      imgTag: 'Espacio terminado', imgHint: 'A\u00f1ade la foto de tu proyecto'
+    },
+    dash: {
+      live: 'En vivo', project: 'Proyecto activo', strategy: 'Estrategia', design: 'Dise\u00f1o', procurement: 'Compras', install: 'Montaje',
+      budget: 'Presupuesto', delivery: 'Pr\u00f3xima entrega', deliveryVal: 'Mar · 14:00 · Muelle 3', onTrack: 'En curso', updates: '\u00daltimas fotos',
+      projects: 'Proyectos activos', thisQuarter: 'Este trimestre'
+    },
+    declarative: { a: 'No vendemos muebles.', b: 'Entregamos entornos.' },
+    model: {
+      kicker: 'El modelo', title: 'Un solo socio, todo el recorrido.',
+      intro: 'Los arquitectos dise\u00f1an. Los proveedores venden. Los contratistas ejecutan. Nadie controla todo el recorrido \u2014 Vestaform s\u00ed, del concepto a la entrega.',
+      tabs: [
+        { n: '01', label: 'Estrategia', blurb: 'Ayudamos a las organizaciones a definir c\u00f3mo trabajan, colaboran y viven sus espacios.', services: ['Estrategia de espacio', 'Planificaci\u00f3n de espacios', 'An\u00e1lisis de ocupaci\u00f3n', 'Transformaci\u00f3n del espacio'] },
+        { n: '02', label: 'Dise\u00f1o', blurb: 'Entornos bellos y funcionales alineados con los objetivos del negocio.', services: ['Dise\u00f1o de interiores', 'Dise\u00f1o de oficinas', 'Dise\u00f1o de hosteler\u00eda', 'Integraci\u00f3n de marca', 'Especificaci\u00f3n de mobiliario'] },
+        { n: '03', label: 'Entrega', blurb: 'Gestionamos cada detalle, de la compra a la instalaci\u00f3n.', services: ['Compras', 'Gesti\u00f3n de proveedores', 'Gesti\u00f3n de proyectos', 'Log\u00edstica', 'Instalaci\u00f3n'] },
+        { n: '04', label: 'Tecnolog\u00eda', blurb: 'Una capa digital que conecta clientes, proveedores y proyectos en tiempo real.', services: ['Panel en tiempo real', 'Seguimiento de entregas', 'Control de presupuesto', 'Documentaci\u00f3n', 'Progreso de montaje'] }
+      ]
+    },
+    os: {
+      kicker: 'Vestaform OS\u2122', title: 'El sistema operativo de tu proyecto.',
+      sub: 'Una \u00fanica capa digital que conecta clientes, proveedores y proyectos \u2014 para que cada decisi\u00f3n, presupuesto y entrega sea visible en tiempo real.',
+      features: ['Panel en tiempo real', 'Seguimiento de entregas', 'Control de presupuesto', 'Documentaci\u00f3n', 'Fotos del proyecto', 'Progreso de montaje']
+    },
+    ai: {
+      kicker: 'Inteligencia de proyecto', title: 'Experiencia humana, acelerada por IA.',
+      sub: 'Vestaform combina equipos especializados con IA para acelerar la planificaci\u00f3n, el aprovisionamiento y la ejecuci\u00f3n. La IA como potenciador \u2014 nunca como producto.',
+      items: [
+        { t: 'Especificaci\u00f3n de mobiliario', d: 'Especificaciones asistidas por IA seg\u00fan brief y presupuesto.' },
+        { t: 'Selecci\u00f3n de proveedores', d: 'Los proveedores adecuados, al instante.' },
+        { t: 'An\u00e1lisis de presupuesto', d: 'Modelado de costes y alertas autom\u00e1ticas.' },
+        { t: 'Identificaci\u00f3n de riesgos', d: 'Detecta retrasos antes de que ocurran.' },
+        { t: 'Asistente documental', d: 'Cada plano y aprobaci\u00f3n, organizado.' },
+        { t: 'Generaci\u00f3n de inspiraci\u00f3n', d: 'Direcciones de dise\u00f1o seg\u00fan brief en segundos.' }
+      ]
+    },
+    industries: {
+      kicker: 'Sectores', title: 'Entornos para c\u00f3mo trabajan y se re\u00fanen las personas.',
+      items: [
+        { name: 'Oficinas', d: 'Oficinas corporativas y sedes.' },
+        { name: 'Hosteler\u00eda', d: 'Hoteles, restaurantes y experiencias.' },
+        { name: 'Salud', d: 'Cl\u00ednicas y entornos asistenciales.' },
+        { name: 'Educaci\u00f3n', d: 'Espacios de aprendizaje y colaboraci\u00f3n.' },
+        { name: 'Comercial', d: 'Retail y espacios de cara al cliente.' }
+      ]
+    },
+    case: {
+      kicker: 'Caso de \u00e9xito', client: 'Dental Company', title: 'Escalando una red nacional de cl\u00ednicas en Espa\u00f1a.',
+      body: 'Un despliegue multisede entregado como un solo programa \u2014 dise\u00f1ado, aprovisionado, gestionado e instalado cl\u00ednica a cl\u00ednica, con visibilidad total en cada paso.',
+      metrics: [ { n: '24', l: 'Cl\u00ednicas entregadas' }, { n: '18k', l: 'Productos comprados' }, { n: '\u20ac6,4M', l: 'Presupuesto gestionado' }, { n: '98%', l: 'Entrega a tiempo' } ],
+      quote: 'Los clientes compran resultados, no muebles.'
+    },
+    why: {
+      kicker: 'Por qu\u00e9 Vestaform', title: 'No un estudio. Un socio de entrega.', col1: 'Estudio tradicional', col2: 'Vestaform',
+      rows: [
+        { trad: 'Dise\u00f1a espacios', vesta: 'Dise\u00f1a y entrega espacios' },
+        { trad: 'M\u00faltiples proveedores', vesta: '\u00danico punto de contacto' },
+        { trad: 'Visibilidad limitada', vesta: 'Seguimiento en tiempo real' },
+        { trad: 'Coordinaci\u00f3n manual', vesta: 'Flujos con tecnolog\u00eda' },
+        { trad: 'Termina en la instalaci\u00f3n', vesta: 'Relaci\u00f3n a largo plazo' }
+      ]
+    },
+    vision: {
+      kicker: 'La visi\u00f3n', title: 'El sistema operativo de los espacios f\u00edsicos.',
+      body: 'No otro estudio de dise\u00f1o. La plataforma que las empresas usan para dise\u00f1ar, comprar, gestionar, seguir y operar sus entornos \u2014 en toda Europa.',
+      pills: ['Dise\u00f1ar', 'Comprar', 'Gestionar', 'Seguir', 'Operar']
+    },
+    cta: { title: 'Construyamos el espacio que tu negocio merece.', sub: 'Cu\u00e9ntanos a d\u00f3nde vas. Te mostramos c\u00f3mo Vestaform te lleva all\u00ed.', btn: 'Reserva una llamada' },
+    footer: { tag: 'No vendemos muebles. Entregamos entornos.', rights: 'Todos los derechos reservados.' }
+  };
+
+  setEn = () => this.setState({ lang: 'en' });
+  setEs = () => this.setState({ lang: 'es' });
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = lang === 'es' ? Component.ES : Component.EN;
+    const accent = this.props.accent || '#bd562e';
+    const active = this.state.active;
+
+    const indImgs = ['images/ind-workplace.png', 'images/ind-hospitality.png', 'images/ind-healthcare.png', 'images/ind-education.png', 'images/ind-commercial.png'];
+    const industryCards = t.industries.items.map((it, i) => ({
+      name: it.name, d: it.d,
+      imgStyle: { position: 'absolute', inset: 0, backgroundImage: 'url("' + indImgs[i] + '")', backgroundSize: 'cover', backgroundPosition: 'center' }
+    }));
+
+    const words = t.hero.words;
+    const wi = this.state.wordIdx % words.length;
+    const rotatingWord = React.createElement('span', {
+      key: lang + wi,
+      style: {
+        fontStyle: 'italic', color: accent, display: 'inline-block',
+        animation: 'vfWordIn 0.55s cubic-bezier(0.2,0.7,0.2,1) both'
+      }
+    }, words[wi]);
+
+    const tabs = t.model.tabs.map((tab, i) => ({
+      n: tab.n, label: tab.label, blurb: tab.blurb, services: tab.services,
+      isActive: i === active,
+      onClick: () => this.setState({ active: i }),
+      numStyle: { color: i === active ? accent : '#a99c87' },
+      labelStyle: { color: i === active ? '#221c14' : '#8c8170' },
+      barStyle: { transform: i === active ? 'scaleX(1)' : 'scaleX(0)' }
+    }));
+
+    const osData = [
+      { name: lang === 'es' ? 'Madrid Flagship' : 'Madrid Flagship', meta: lang === 'es' ? 'Montaje' : 'Install', pct: '68%', w: '68%', dot: accent },
+      { name: lang === 'es' ? 'Barcelona Oeste' : 'Barcelona West', meta: lang === 'es' ? 'Compras' : 'Procurement', pct: '41%', w: '41%', dot: '#9aa67f' },
+      { name: lang === 'es' ? 'Valencia Cl\u00ednica' : 'Valencia Clinic', meta: lang === 'es' ? 'Dise\u00f1o' : 'Design', pct: '22%', w: '22%', dot: '#c9a14a' },
+      { name: lang === 'es' ? 'Sevilla HQ' : 'Sevilla HQ', meta: lang === 'es' ? 'Estrategia' : 'Strategy', pct: '9%', w: '9%', dot: '#8a7d6a' }
+    ];
+    const osRows = osData.map((r, i) => ({
+      name: r.name, meta: r.meta, pct: r.pct, dot: r.dot,
+      barStyle: { width: r.w, animation: 'vfGrow 1s ease-out ' + (0.3 + i * 0.12) + 's both' }
+    }));
+
+    const activeNav = { color: '#221c14', fontWeight: 700, background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px', fontFamily: "'Schibsted Grotesk', sans-serif" };
+    const inactiveNav = { color: '#a99c87', fontWeight: 600, background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px', fontFamily: "'Schibsted Grotesk', sans-serif" };
+
+    return {
+      t, accent, rotatingWord, rootRef: this.rootRef,
+      tabs, osRows, industryCards,
+      setEn: this.setEn, setEs: this.setEs,
+      enStyle: lang === 'en' ? activeNav : inactiveNav,
+      esStyle: lang === 'es' ? activeNav : inactiveNav,
+      ctaStyle: { background: accent, color: '#fdfaf3' },
+      ctaSmallStyle: { background: accent, color: '#fdfaf3' }
+    };
+  }
+}
+</script>
+</body>
+</html>
