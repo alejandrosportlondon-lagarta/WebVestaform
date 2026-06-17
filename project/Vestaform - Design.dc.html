@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  ::selection { background: #bd562e; color: #fdfaf3; }
+  @keyframes vfUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  @keyframes vfFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes vfPanel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes vfFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  image-slot { display: block; }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="font-family: 'Schibsted Grotesk', system-ui, sans-serif; background: #efe9dd; color: #221c14; min-height: 100vh; overflow-x: clip; -webkit-font-smoothing: antialiased;">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(239,233,221,0.82); border-bottom: 1px solid #ddd3c0;">
+    <nav style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="Vestaform%20-%20Home.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #221c14;">
+        <span style="width: 22px; height: 22px; border: 1.5px solid #221c14; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center;">
+          <span style="width: 8px; height: 8px; background: {{ accent }}; border-radius: 1px;"></span>
+        </span>
+        <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em;">Vestaform</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 30px;">
+        <a href="Vestaform%20-%20Home.dc.html#model" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.approach }}</a>
+        <a href="Vestaform%20-%20Home.dc.html#os" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.os }}</a>
+        <a href="Vestaform%20-%20Home.dc.html#industries" style="text-decoration: none; color: #4a4133; font-size: 14.5px; font-weight: 500;" style-hover="color: #221c14;">{{ t.nav.industries }}</a>
+        <a href="#top" style="text-decoration: none; color: #221c14; font-size: 14.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 7px;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: {{ accent }};"></span>{{ t.nav.design }}
+        </a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <div style="display: flex; align-items: center; gap: 2px; font-size: 13px; font-weight: 600;">
+          <button onClick="{{ setEn }}" style="{{ enStyle }}">EN</button>
+          <span style="color: #c3b9a4;">/</span>
+          <button onClick="{{ setEs }}" style="{{ esStyle }}">ES</button>
+        </div>
+        <a href="#contact" style="text-decoration: none; padding: 9px 18px; border-radius: 3px; font-size: 14px; font-weight: 600;" style="{{ ctaSmallStyle }}" style-hover="opacity: 0.9;">{{ t.nav.cta }}</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" style="max-width: 1240px; margin: 0 auto; padding: 72px 32px 40px; position: relative;">
+    <div style="position: absolute; inset: 0; background-image: linear-gradient(#d7cdb8 1px, transparent 1px); background-size: 100% 88px; opacity: 0.5; pointer-events: none; mask-image: linear-gradient(to bottom, #000 30%, transparent 92%);"></div>
+    <div style="position: relative; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(32px, 5vw, 72px); align-items: center;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170; animation: vfUp 0.7s cubic-bezier(0.2,0.7,0.2,1) both;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ accent }};"></span>
+          {{ t.hero.eyebrow }}
+        </div>
+        <h1 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(42px, 5.4vw, 78px); line-height: 0.98; letter-spacing: -0.015em; margin: 22px 0 0; max-width: 15ch; animation: vfUp 0.8s cubic-bezier(0.2,0.7,0.2,1) 0.06s both;">
+          {{ t.hero.h1a }} <span style="font-style: italic; color: {{ accent }};">{{ t.hero.h1b }}</span>{{ t.hero.h1c }}
+        </h1>
+        <p style="max-width: 50ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.55; color: #4a4133; margin: 26px 0 0; animation: vfUp 0.8s cubic-bezier(0.2,0.7,0.2,1) 0.14s both;">{{ t.hero.sub }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; animation: vfUp 0.8s cubic-bezier(0.2,0.7,0.2,1) 0.2s both;">
+          <a href="#contact" style="text-decoration: none; padding: 14px 26px; border-radius: 3px; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; gap: 9px;" style="{{ ctaStyle }}" style-hover="opacity: 0.9; transform: translateY(-1px);">
+            {{ t.hero.cta1 }} <span style="font-size: 16px;">→</span>
+          </a>
+          <a href="#collection" style="text-decoration: none; padding: 14px 24px; border-radius: 3px; font-size: 15px; font-weight: 600; color: #221c14; border: 1px solid #c9bfa9; background: transparent;" style-hover="background: #e6dcc8;">{{ t.hero.cta2 }}</a>
+        </div>
+      </div>
+      <div style="position: relative; animation: vfUp 0.9s cubic-bezier(0.2,0.7,0.2,1) 0.28s both;">
+        <div style="position: relative; aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; border: 1px solid #d2c7b0; background: linear-gradient(135deg, #e2d8c4, #d8ccb4); box-shadow: 0 30px 60px -28px rgba(40,25,12,0.4);">
+          <image-slot id="vf-design-hero" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop a flagship product photo"></image-slot>
+          <div style="position: absolute; left: 18px; top: 16px; pointer-events: none; font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 5px 10px; border-radius: 20px; backdrop-filter: blur(4px);">{{ t.hero.imgTag }}</div>
+        </div>
+        <div style="position: absolute; right: -14px; bottom: -18px; background: #1b1611; color: #f3ece0; border-radius: 8px; padding: 14px 18px; box-shadow: 0 20px 40px -16px rgba(40,25,12,0.5); animation: vfFloat 7s ease-in-out infinite;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #b6a892;">{{ t.hero.badgeLabel }}</div>
+          <div style="font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 700; margin-top: 2px;">{{ t.hero.badgeVal }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IN-HOUSE STORY -->
+  <section style="margin-top: 72px; background: #221c14; color: #ece4d6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) 32px;">
+      <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #a99c87;">
+        <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.story.kicker }}
+      </div>
+      <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: end; margin-top: 18px;">
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(32px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -0.015em; margin: 0; max-width: 16ch; color: #f6efe3;">
+          {{ t.story.titleA }} <span style="font-style: italic; color: {{ accent }};">{{ t.story.titleB }}</span>
+        </h2>
+        <p style="font-size: 16.5px; line-height: 1.6; color: #b8ab97; margin: 0;">{{ t.story.body }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px;">
+        <sc-for list="{{ t.story.pillars }}" as="p" hint-placeholder-count="3">
+          <div style="background: #2c241a; border: 1px solid #3a2e22; border-radius: 10px; padding: 28px 26px;">
+            <div style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 30px; color: {{ accent }};">{{ p.n }}</div>
+            <div style="font-size: 18px; font-weight: 600; color: #f3ece0; margin-top: 14px;">{{ p.t }}</div>
+            <div style="font-size: 14.5px; line-height: 1.55; color: #a99c87; margin-top: 8px;">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section id="collection" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 100px) 32px 64px;">
+    <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+      <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.collection.kicker }}
+    </div>
+    <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; margin-top: 16px;">
+      <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.01em; margin: 0; max-width: 14ch;">{{ t.collection.title }}</h2>
+      <p style="font-size: 17px; line-height: 1.6; color: #4a4133; margin: 0;">{{ t.collection.intro }}</p>
+    </div>
+
+    <!-- control bar -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 40px; padding-bottom: 22px; border-bottom: 1px solid #ddd3c0;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button onClick="{{ f.onClick }}" style="cursor: pointer; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13.5px; font-weight: 600; padding: 9px 16px; border-radius: 30px; transition: all 0.2s;" style="{{ f.chipStyle }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display: inline-flex; align-items: center; gap: 2px; background: #e3d9c5; border: 1px solid #d4c9b2; border-radius: 30px; padding: 3px;">
+        <button onClick="{{ setDetailed }}" style="cursor: pointer; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 24px; border: none; transition: all 0.2s;" style="{{ detailedBtnStyle }}">{{ t.collection.detailed }}</button>
+        <button onClick="{{ setGrid }}" style="cursor: pointer; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 24px; border: none; transition: all 0.2s;" style="{{ gridBtnStyle }}">{{ t.collection.grid }}</button>
+      </div>
+    </div>
+
+    <!-- DETAILED VIEW -->
+    <sc-if value="{{ soft.showDetailed }}" hint-placeholder-val="{{ true }}">
+      <article style="display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 4vw, 60px); align-items: center; padding: clamp(40px, 5vw, 60px) 0; border-bottom: 1px solid #ddd3c0; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both;">
+        <div style="order: 1; position: relative; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; border: 1px solid #d8cdb8; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+          <image-slot id="vf-prod-softsystem" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop SoftSystem photo"></image-slot>
+          <div style="position: absolute; left: 16px; top: 14px; pointer-events: none; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ soft.cat0 }}</div>
+        </div>
+        <div style="order: 2;">
+          <div style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: {{ accent }};">{{ soft.tagline }}</div>
+          <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.05; letter-spacing: -0.01em; margin: 10px 0 0;">{{ soft.name }}</h3>
+          <p style="font-size: 16.5px; line-height: 1.6; color: #4a4133; margin: 14px 0 0; max-width: 46ch;">{{ soft.desc }}</p>
+          <dl style="margin: 24px 0 0; display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specMaterials }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ soft.materials }}</dd>
+            </div>
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specDimensions }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ soft.dimensions }}</dd>
+            </div>
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0; border-bottom: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specFinishes }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ soft.finishes }}</dd>
+            </div>
+          </dl>
+          <a href="#contact" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; text-decoration: none; font-size: 14.5px; font-weight: 600; color: {{ accent }};" style-hover="gap: 12px;">{{ t.collection.requestThis }} <span>→</span></a>
+        </div>
+      </article>
+    </sc-if>
+
+    <sc-if value="{{ otter.showDetailed }}" hint-placeholder-val="{{ true }}">
+      <article style="display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 4vw, 60px); align-items: center; padding: clamp(40px, 5vw, 60px) 0; border-bottom: 1px solid #ddd3c0; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both;">
+        <div style="order: 2; position: relative; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; border: 1px solid #d8cdb8; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+          <image-slot id="vf-prod-otter" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop Otter photo"></image-slot>
+          <div style="position: absolute; left: 16px; top: 14px; pointer-events: none; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ otter.cat0 }}</div>
+        </div>
+        <div style="order: 1;">
+          <div style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: {{ accent }};">{{ otter.tagline }}</div>
+          <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.05; letter-spacing: -0.01em; margin: 10px 0 0;">{{ otter.name }}</h3>
+          <p style="font-size: 16.5px; line-height: 1.6; color: #4a4133; margin: 14px 0 0; max-width: 46ch;">{{ otter.desc }}</p>
+          <dl style="margin: 24px 0 0; display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specMaterials }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ otter.materials }}</dd>
+            </div>
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specDimensions }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ otter.dimensions }}</dd>
+            </div>
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0; border-bottom: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specFinishes }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ otter.finishes }}</dd>
+            </div>
+          </dl>
+          <a href="#contact" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; text-decoration: none; font-size: 14.5px; font-weight: 600; color: {{ accent }};" style-hover="gap: 12px;">{{ t.collection.requestThis }} <span>→</span></a>
+        </div>
+      </article>
+    </sc-if>
+
+    <sc-if value="{{ ale.showDetailed }}" hint-placeholder-val="{{ true }}">
+      <article style="display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 4vw, 60px); align-items: center; padding: clamp(40px, 5vw, 60px) 0; border-bottom: 1px solid #ddd3c0; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both;">
+        <div style="order: 1; position: relative; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; border: 1px solid #d8cdb8; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+          <image-slot id="vf-prod-ale" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop Ale Table photo"></image-slot>
+          <div style="position: absolute; left: 16px; top: 14px; pointer-events: none; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ ale.cat0 }}</div>
+        </div>
+        <div style="order: 2;">
+          <div style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: {{ accent }};">{{ ale.tagline }}</div>
+          <h3 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.05; letter-spacing: -0.01em; margin: 10px 0 0;">{{ ale.name }}</h3>
+          <p style="font-size: 16.5px; line-height: 1.6; color: #4a4133; margin: 14px 0 0; max-width: 46ch;">{{ ale.desc }}</p>
+          <dl style="margin: 24px 0 0; display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specMaterials }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ ale.materials }}</dd>
+            </div>
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specDimensions }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ ale.dimensions }}</dd>
+            </div>
+            <div style="display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #ddd3c0; border-bottom: 1px solid #ddd3c0;">
+              <dt style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8c8170;">{{ t.collection.specFinishes }}</dt>
+              <dd style="margin: 0; font-size: 15px; color: #2a2318;">{{ ale.finishes }}</dd>
+            </div>
+          </dl>
+          <a href="#contact" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; text-decoration: none; font-size: 14.5px; font-weight: 600; color: {{ accent }};" style-hover="gap: 12px;">{{ t.collection.requestThis }} <span>→</span></a>
+        </div>
+      </article>
+    </sc-if>
+
+    <!-- GRID VIEW -->
+    <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both;">
+        <sc-if value="{{ soft.show }}" hint-placeholder-val="{{ true }}">
+          <div style="border-radius: 9px; overflow: hidden; border: 1px solid #d8cdb8; background: #f6f1e7; transition: border-color 0.2s, transform 0.2s;" style-hover="border-color: #c2b599; transform: translateY(-3px);">
+            <div style="position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+              <image-slot id="vf-prod-softsystem" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop SoftSystem photo"></image-slot>
+              <div style="position: absolute; left: 14px; top: 12px; pointer-events: none; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ soft.cat0 }}</div>
+            </div>
+            <div style="padding: 20px 22px 24px;">
+              <div style="font-family: 'Inter Tight', sans-serif; font-size: 21px; font-weight: 600; letter-spacing: -0.01em;">{{ soft.name }}</div>
+              <div style="font-size: 13px; font-weight: 600; color: {{ accent }}; margin-top: 3px;">{{ soft.tagline }}</div>
+              <div style="font-size: 13.5px; line-height: 1.5; color: #6a6151; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e3dac7;">{{ soft.materials }}</div>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ otter.show }}" hint-placeholder-val="{{ true }}">
+          <div style="border-radius: 9px; overflow: hidden; border: 1px solid #d8cdb8; background: #f6f1e7; transition: border-color 0.2s, transform 0.2s;" style-hover="border-color: #c2b599; transform: translateY(-3px);">
+            <div style="position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+              <image-slot id="vf-prod-otter" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop Otter photo"></image-slot>
+              <div style="position: absolute; left: 14px; top: 12px; pointer-events: none; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ otter.cat0 }}</div>
+            </div>
+            <div style="padding: 20px 22px 24px;">
+              <div style="font-family: 'Inter Tight', sans-serif; font-size: 21px; font-weight: 600; letter-spacing: -0.01em;">{{ otter.name }}</div>
+              <div style="font-size: 13px; font-weight: 600; color: {{ accent }}; margin-top: 3px;">{{ otter.tagline }}</div>
+              <div style="font-size: 13.5px; line-height: 1.5; color: #6a6151; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e3dac7;">{{ otter.materials }}</div>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ale.show }}" hint-placeholder-val="{{ true }}">
+          <div style="border-radius: 9px; overflow: hidden; border: 1px solid #d8cdb8; background: #f6f1e7; transition: border-color 0.2s, transform 0.2s;" style-hover="border-color: #c2b599; transform: translateY(-3px);">
+            <div style="position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, #e2d8c4, #d6cab1);">
+              <image-slot id="vf-prod-ale" style="position: absolute; inset: 0; width: 100%; height: 100%;" shape="rect" fit="cover" placeholder="Drop Ale Table photo"></image-slot>
+              <div style="position: absolute; left: 14px; top: 12px; pointer-events: none; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(27,22,17,0.55); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px);">{{ ale.cat0 }}</div>
+            </div>
+            <div style="padding: 20px 22px 24px;">
+              <div style="font-family: 'Inter Tight', sans-serif; font-size: 21px; font-weight: 600; letter-spacing: -0.01em;">{{ ale.name }}</div>
+              <div style="font-size: 13px; font-weight: 600; color: {{ accent }}; margin-top: 3px;">{{ ale.tagline }}</div>
+              <div style="font-size: 13.5px; line-height: 1.5; color: #6a6151; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e3dac7;">{{ ale.materials }}</div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <!-- EMPTY / MADE-TO-ORDER -->
+    <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top: 40px; border: 1px dashed #c9bfa9; border-radius: 10px; padding: clamp(40px, 6vw, 72px); text-align: center; background: #f3ede1; animation: vfFade 0.4s ease both;">
+        <div style="font-family: 'Inter Tight', sans-serif; font-size: clamp(24px, 3vw, 34px); font-weight: 600; letter-spacing: -0.01em;">{{ t.collection.emptyTitle }}</div>
+        <p style="font-size: 16px; line-height: 1.6; color: #6a6151; margin: 12px auto 0; max-width: 44ch;">{{ t.collection.emptyBody }}</p>
+        <a href="#contact" style="display: inline-flex; align-items: center; gap: 9px; margin-top: 24px; text-decoration: none; padding: 13px 24px; border-radius: 3px; font-size: 15px; font-weight: 600;" style="{{ ctaStyle }}" style-hover="opacity: 0.9;">{{ t.collection.emptyCta }} <span>→</span></a>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section style="border-top: 1px solid #ddd3c0; background: #e7decb;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) 32px;">
+      <div style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8c8170;">
+        <span style="width: 22px; height: 1px; background: {{ accent }};"></span>{{ t.cap.kicker }}
+      </div>
+      <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -0.01em; margin: 16px 0 0; max-width: 18ch;">{{ t.cap.title }}</h2>
+      <p style="font-size: 17px; line-height: 1.6; color: #4a4133; margin: 16px 0 44px; max-width: 56ch;">{{ t.cap.intro }}</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #d6cab1; border: 1px solid #d6cab1; border-radius: 10px; overflow: hidden;">
+        <sc-for list="{{ t.cap.items }}" as="c" hint-placeholder-count="4">
+          <div style="background: #f3ede1; padding: 28px 24px; min-height: 168px; display: flex; flex-direction: column;" style-hover="background: #faf6ec;">
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }};">{{ c.n }}</div>
+            <div style="font-size: 18px; font-weight: 600; color: #221c14; margin-top: 14px;">{{ c.t }}</div>
+            <div style="font-size: 14px; line-height: 1.5; color: #6a6151; margin-top: 8px;">{{ c.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 100px) 32px;">
+    <div style="background: #1b1611; border-radius: 14px; padding: clamp(44px, 6vw, 84px); position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 0%, rgba(189,86,46,0.18), transparent 60%);"></div>
+      <div style="position: relative; text-align: center;">
+        <h2 style="font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.04; color: #f6efe3; margin: 0 auto; max-width: 18ch;">{{ t.cta.title }}</h2>
+        <p style="font-size: 17.5px; line-height: 1.6; color: #b8ab97; margin: 18px auto 0; max-width: 50ch;">{{ t.cta.sub }}</p>
+      </div>
+      <div style="position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px;">
+        <sc-for list="{{ ctaCards }}" as="c" hint-placeholder-count="3">
+          <a href="#" style="text-decoration: none; background: #2c241a; border: 1px solid #3a2e22; border-radius: 10px; padding: 26px 24px; display: flex; flex-direction: column; transition: transform 0.22s, border-color 0.22s;" style-hover="transform: translateY(-3px); border-color: #54422c;">
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(189,86,46,0.16); display: flex; align-items: center; justify-content: center; color: {{ accent }}; font-size: 17px;">{{ c.icon }}</div>
+            <div style="font-size: 18px; font-weight: 600; color: #f3ece0; margin-top: 18px;">{{ c.t }}</div>
+            <div style="font-size: 14px; line-height: 1.5; color: #a99c87; margin-top: 7px; flex: 1;">{{ c.d }}</div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 14px; font-weight: 600; color: {{ accent }};">{{ c.action }} <span>→</span></div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid #ddd3c0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 56px 32px;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start;">
+        <div style="max-width: 30ch;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 22px; height: 22px; border: 1.5px solid #221c14; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center;">
+              <span style="width: 8px; height: 8px; background: {{ accent }}; border-radius: 1px;"></span>
+            </span>
+            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em;">Vestaform</span>
+          </div>
+          <p style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-style: italic; font-size: 20px; line-height: 1.3; color: #4a4133; margin: 18px 0 0;">{{ t.footer.tag }}</p>
+        </div>
+        <div style="display: flex; gap: 26px;">
+          <a href="Vestaform%20-%20Home.dc.html#model" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.approach }}</a>
+          <a href="Vestaform%20-%20Home.dc.html#os" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.os }}</a>
+          <a href="Vestaform%20-%20Home.dc.html#industries" style="text-decoration: none; color: #4a4133; font-size: 14px;" style-hover="color: #221c14;">{{ t.nav.industries }}</a>
+          <a href="#top" style="text-decoration: none; color: #221c14; font-size: 14px; font-weight: 600;">{{ t.nav.design }}</a>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 44px; padding-top: 22px; border-top: 1px solid #ddd3c0; font-size: 13px; color: #8c8170;">
+        <span>© 2026 Vestaform. {{ t.footer.rights }}</span>
+        <span>Madrid · España</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#c0d80e&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;es&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;es&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;defaultView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;detailed&quot;,&quot;options&quot;:[&quot;detailed&quot;,&quot;grid&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;pageBg&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = {
+    lang: this.props.defaultLang || 'en',
+    filter: 'All',
+    view: this.props.defaultView || 'detailed'
+  };
+
+  static PRODUCTS = [
+    {
+      key: 'soft', name: 'SoftSystem', cats: ['Soft Seating', 'Sofas'], slot: 'vf-prod-softsystem',
+      en: {
+        tagline: 'Modular soft seating',
+        desc: 'Our modular Soft System gives you a wide choice of configuration options, making it adaptable to any environment \u2014 from casual seating to hotel lounges, waiting areas and offices.',
+        materials: 'Solid beech frame \u00b7 high-resilience foam \u00b7 wool-blend or boucl\u00e9 upholstery',
+        dimensions: 'Module 80 \u00d7 80 \u00d7 72 cm \u00b7 configurable runs, corners & islands',
+        finishes: '40+ fabrics \u00b7 contrast piping \u00b7 upholstered or exposed base'
+      },
+      es: {
+        tagline: 'Asiento modular',
+        desc: 'Nuestro Soft System modular ofrece una amplia gama de configuraciones, adapt\u00e1ndose a cualquier entorno \u2014 desde asientos informales hasta lounges de hotel, salas de espera y oficinas.',
+        materials: 'Estructura de haya maciza \u00b7 espuma de alta resiliencia \u00b7 tapicer\u00eda de mezcla de lana o boucl\u00e9',
+        dimensions: 'M\u00f3dulo 80 \u00d7 80 \u00d7 72 cm \u00b7 composiciones, esquinas e islas configurables',
+        finishes: '+40 tejidos \u00b7 ribete en contraste \u00b7 base tapizada o vista'
+      }
+    },
+    {
+      key: 'otter', name: 'Otter', cats: ['Soft Seating'], slot: 'vf-prod-otter',
+      en: {
+        tagline: 'Stackable chair',
+        desc: 'Otter is a stackable, lightweight chair that combines personality with functionality. Its wide back and lightweight structure are designed to deliver maximum comfort and support.',
+        materials: 'Powder-coated steel rod \u00b7 polypropylene shell \u00b7 optional upholstered seat pad',
+        dimensions: 'W 54 \u00d7 D 55 \u00d7 H 79 cm \u00b7 seat height 46 cm \u00b7 stacks up to 8',
+        finishes: '12 shell colours \u00b7 6 frame finishes'
+      },
+      es: {
+        tagline: 'Silla apilable',
+        desc: 'Otter es una silla apilable y ligera que combina personalidad y funcionalidad. Su respaldo ancho y su estructura ligera est\u00e1n dise\u00f1ados para ofrecer el m\u00e1ximo confort y apoyo.',
+        materials: 'Varilla de acero con recubrimiento en polvo \u00b7 carcasa de polipropileno \u00b7 coj\u00edn tapizado opcional',
+        dimensions: 'An 54 \u00d7 Pr 55 \u00d7 Al 79 cm \u00b7 altura de asiento 46 cm \u00b7 apilable hasta 8',
+        finishes: '12 colores de carcasa \u00b7 6 acabados de estructura'
+      }
+    },
+    {
+      key: 'ale', name: 'Ale Table', cats: ['Tables'], slot: 'vf-prod-ale',
+      en: {
+        tagline: 'Table family',
+        desc: 'The Ale family is available in a variety of sizes and finishes, with round, square or squircle table tops to suit any setting \u2014 from meeting rooms to caf\u00e9s.',
+        materials: 'Steel or solid-oak base \u00b7 FENIX, oak veneer or linoleum top',
+        dimensions: '\u00d8 70\u2013140 cm \u00b7 H 73 cm dining / H 40 cm coffee',
+        finishes: 'Round \u00b7 square \u00b7 squircle \u00b7 3 base & 8 top finishes'
+      },
+      es: {
+        tagline: 'Familia de mesas',
+        desc: 'La familia Ale est\u00e1 disponible en una variedad de tama\u00f1os y acabados, con tableros redondos, cuadrados o squircle para adaptarse a cualquier espacio \u2014 de salas de reuni\u00f3n a cafeter\u00edas.',
+        materials: 'Base de acero o roble macizo \u00b7 tablero FENIX, chapa de roble o lin\u00f3leo',
+        dimensions: '\u00d8 70\u2013140 cm \u00b7 Al 73 cm comedor / Al 40 cm centro',
+        finishes: 'Redondo \u00b7 cuadrado \u00b7 squircle \u00b7 3 bases y 8 acabados de tablero'
+      }
+    }
+  ];
+
+  static EN = {
+    nav: { approach: 'Approach', os: 'Vestaform OS', industries: 'Industries', design: 'Vestaform Design', cta: 'Request a quote' },
+    hero: {
+      eyebrow: 'Vestaform Design \u00b7 In-house collection',
+      h1a: 'Furniture we', h1b: 'design and make', h1c: ' ourselves.',
+      sub: 'Vestaform Design is our own line of products \u2014 conceived in our studio and produced in our workshops. Every piece is built to specification, finished to order and ready to scale across your spaces.',
+      cta1: 'Request a quote', cta2: 'Browse the collection',
+      imgTag: 'Vestaform Design', badgeLabel: 'Designed & made', badgeVal: 'In-house'
+    },
+    story: {
+      kicker: 'Why we make our own',
+      titleA: 'We don\u2019t just specify furniture.', titleB: 'We build it.',
+      body: 'Owning the design and the manufacturing means we control quality, cost and lead time end to end. No middlemen, no compromise on the brief \u2014 just pieces engineered for the way our clients actually use their spaces.',
+      pillars: [
+        { n: '01', t: 'Our design studio', d: 'Every product starts as a brief and a sketch in-house \u2014 designed for real environments, not catalogues.' },
+        { n: '02', t: 'Our own manufacturing', d: 'Upholstery, metalwork and finishing under one roof. We control quality and lead times directly.' },
+        { n: '03', t: 'Made to specification', d: 'Sizes, fabrics and finishes adapted to each project \u2014 with consistency across every unit.' }
+      ]
+    },
+    collection: {
+      kicker: 'The collection',
+      title: 'Designed by us. Made by us.',
+      intro: 'A growing family of seating, tables and soft pieces \u2014 each available in multiple sizes, fabrics and finishes. Filter by family, or switch between detailed specs and the gallery.',
+      detailed: 'Detailed', grid: 'Grid',
+      specMaterials: 'Materials', specDimensions: 'Dimensions', specFinishes: 'Finishes',
+      requestThis: 'Request this piece',
+      emptyTitle: 'Made to order',
+      emptyBody: 'Pieces in this family are produced in-house to your specification. Tell us what you need and we\u2019ll prepare options and a quote.',
+      emptyCta: 'Request the catalogue'
+    },
+    cap: {
+      kicker: 'In-house capability',
+      title: 'Options we manufacture ourselves.',
+      intro: 'Because production is ours, we can adapt dimensions, upholstery and finishes per project \u2014 and deliver them at the scale a multi-site rollout demands.',
+      items: [
+        { n: 'A', t: 'Upholstery', d: 'Foam cutting, sewing and upholstery in 40+ fabrics and leathers.' },
+        { n: 'B', t: 'Metalwork', d: 'Steel frames, legs and bases, powder-coated to any RAL.' },
+        { n: 'C', t: 'Woodwork & finishing', d: 'Solid timber, veneer and laminate tops, finished to order.' },
+        { n: 'D', t: 'Custom & contract', d: 'Bespoke sizes and contract-grade builds for large rollouts.' }
+      ]
+    },
+    cta: {
+      title: 'Bring Vestaform Design into your project.',
+      sub: 'Whether you need three chairs or a full fit-out, we design, manufacture and deliver \u2014 with full visibility through Vestaform OS.',
+      cards: [
+        { icon: '\u270e', t: 'Request a quote', d: 'Send us your pieces, quantities and finishes \u2014 we\u2019ll price it up.', action: 'Start a quote' },
+        { icon: '\u2913', t: 'Download the catalogue', d: 'The full Vestaform Design range, specs and finish options.', action: 'Get the PDF' },
+        { icon: '\u25c8', t: 'Book a showroom visit', d: 'See, sit on and feel the collection at our Madrid showroom.', action: 'Book a visit' }
+      ]
+    },
+    footer: { tag: 'We don\u2019t sell furniture. We deliver environments.', rights: 'All rights reserved.' }
+  };
+
+  static ES = {
+    nav: { approach: 'Enfoque', os: 'Vestaform OS', industries: 'Sectores', design: 'Vestaform Design', cta: 'Pide presupuesto' },
+    hero: {
+      eyebrow: 'Vestaform Design \u00b7 Colecci\u00f3n propia',
+      h1a: 'Mobiliario que', h1b: 'dise\u00f1amos y fabricamos', h1c: ' nosotros.',
+      sub: 'Vestaform Design es nuestra propia l\u00ednea de productos \u2014 concebida en nuestro estudio y producida en nuestros talleres. Cada pieza se construye a medida, se acaba bajo pedido y est\u00e1 lista para escalar en tus espacios.',
+      cta1: 'Pide presupuesto', cta2: 'Ver la colecci\u00f3n',
+      imgTag: 'Vestaform Design', badgeLabel: 'Dise\u00f1ado y fabricado', badgeVal: 'En casa'
+    },
+    story: {
+      kicker: 'Por qu\u00e9 fabricamos lo nuestro',
+      titleA: 'No solo especificamos mobiliario.', titleB: 'Lo fabricamos.',
+      body: 'Controlar el dise\u00f1o y la fabricaci\u00f3n significa controlar la calidad, el coste y los plazos de principio a fin. Sin intermediarios y sin renunciar al brief \u2014 piezas pensadas para c\u00f3mo los clientes usan realmente sus espacios.',
+      pillars: [
+        { n: '01', t: 'Nuestro estudio', d: 'Cada producto nace de un brief y un boceto en casa \u2014 dise\u00f1ado para entornos reales, no para cat\u00e1logos.' },
+        { n: '02', t: 'Fabricaci\u00f3n propia', d: 'Tapicer\u00eda, metalister\u00eda y acabados bajo un mismo techo. Controlamos calidad y plazos directamente.' },
+        { n: '03', t: 'Hecho a medida', d: 'Tama\u00f1os, tejidos y acabados adaptados a cada proyecto \u2014 con consistencia en cada unidad.' }
+      ]
+    },
+    collection: {
+      kicker: 'La colecci\u00f3n',
+      title: 'Dise\u00f1ado por nosotros. Fabricado por nosotros.',
+      intro: 'Una familia creciente de asientos, mesas y piezas tapizadas \u2014 cada una disponible en varios tama\u00f1os, tejidos y acabados. Filtra por familia o alterna entre fichas detalladas y galer\u00eda.',
+      detailed: 'Detalle', grid: 'Galer\u00eda',
+      specMaterials: 'Materiales', specDimensions: 'Dimensiones', specFinishes: 'Acabados',
+      requestThis: 'Solicitar esta pieza',
+      emptyTitle: 'Hecho bajo pedido',
+      emptyBody: 'Las piezas de esta familia se producen en casa seg\u00fan tu especificaci\u00f3n. Cu\u00e9ntanos qu\u00e9 necesitas y preparamos opciones y presupuesto.',
+      emptyCta: 'Pide el cat\u00e1logo'
+    },
+    cap: {
+      kicker: 'Capacidad propia',
+      title: 'Opciones que fabricamos nosotros.',
+      intro: 'Como la producci\u00f3n es nuestra, adaptamos dimensiones, tapicer\u00eda y acabados por proyecto \u2014 y los entregamos a la escala que exige un despliegue multisede.',
+      items: [
+        { n: 'A', t: 'Tapicer\u00eda', d: 'Corte de espuma, costura y tapizado en +40 tejidos y pieles.' },
+        { n: 'B', t: 'Metalister\u00eda', d: 'Estructuras, patas y bases de acero, lacadas a cualquier RAL.' },
+        { n: 'C', t: 'Madera y acabados', d: 'Tableros de madera maciza, chapa y laminado, acabados bajo pedido.' },
+        { n: 'D', t: 'A medida y contract', d: 'Tama\u00f1os a medida y construcci\u00f3n contract para grandes despliegues.' }
+      ]
+    },
+    cta: {
+      title: 'Lleva Vestaform Design a tu proyecto.',
+      sub: 'Tanto si necesitas tres sillas como un proyecto completo, dise\u00f1amos, fabricamos y entregamos \u2014 con visibilidad total a trav\u00e9s de Vestaform OS.',
+      cards: [
+        { icon: '\u270e', t: 'Pide presupuesto', d: 'Env\u00edanos piezas, cantidades y acabados \u2014 lo presupuestamos.', action: 'Iniciar presupuesto' },
+        { icon: '\u2913', t: 'Descarga el cat\u00e1logo', d: 'Toda la gama Vestaform Design, fichas y opciones de acabado.', action: 'Obtener el PDF' },
+        { icon: '\u25c8', t: 'Reserva una visita', d: 'Ve, prueba y siente la colecci\u00f3n en nuestro showroom de Madrid.', action: 'Reservar visita' }
+      ]
+    },
+    footer: { tag: 'No vendemos muebles. Entregamos entornos.', rights: 'Todos los derechos reservados.' }
+  };
+
+  setEn = () => this.setState({ lang: 'en' });
+  setEs = () => this.setState({ lang: 'es' });
+  setDetailed = () => this.setState({ view: 'detailed' });
+  setGrid = () => this.setState({ view: 'grid' });
+
+  renderVals() {
+    const lang = this.state.lang === 'es' ? 'es' : 'en';
+    const t = lang === 'es' ? Component.ES : Component.EN;
+    const accent = this.props.accent || '#bd562e';
+    const filter = this.state.filter;
+    const view = this.state.view;
+
+    const mk = (p) => {
+      const d = p[lang];
+      const show = filter === 'All' || p.cats.indexOf(filter) !== -1;
+      return {
+        name: p.name, tagline: d.tagline, desc: d.desc,
+        materials: d.materials, dimensions: d.dimensions, finishes: d.finishes,
+        cat0: p.cats[0], show,
+        showDetailed: show && view === 'detailed',
+        showGrid: show && view === 'grid'
+      };
+    };
+    const products = Component.PRODUCTS.map(mk);
+    const soft = products[0], otter = products[1], ale = products[2];
+    const anyVisible = products.some(p => p.show);
+
+    const cats = lang === 'es'
+      ? ['Todo', 'Soft Seating', 'Sofas', 'Tables', 'Puff']
+      : ['All', 'Soft Seating', 'Sofas', 'Tables', 'Puff'];
+    const catKeys = ['All', 'Soft Seating', 'Sofas', 'Tables', 'Puff'];
+
+    const chipActive = { background: accent, color: '#fdfaf3', border: '1px solid ' + accent };
+    const chipIdle = { background: 'transparent', color: '#4a4133', border: '1px solid #c9bfa9' };
+    const filters = catKeys.map((key, i) => ({
+      label: cats[i],
+      onClick: () => this.setState({ filter: key }),
+      chipStyle: filter === key ? chipActive : chipIdle
+    }));
+
+    const segActive = { background: '#1b1611', color: '#f3ece0', cursor: 'pointer' };
+    const segIdle = { background: 'transparent', color: '#6a6151', cursor: 'pointer' };
+
+    const ctaCards = t.cta.cards;
+
+    return {
+      t, accent, soft, otter, ale,
+      showGrid: anyVisible && view === 'grid',
+      showEmpty: !anyVisible,
+      filters,
+      setDetailed: this.setDetailed, setGrid: this.setGrid,
+      detailedBtnStyle: view === 'detailed' ? segActive : segIdle,
+      gridBtnStyle: view === 'grid' ? segActive : segIdle,
+      setEn: this.setEn, setEs: this.setEs,
+      enStyle: lang === 'en'
+        ? { color: '#221c14', fontWeight: 700, background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px', fontFamily: "'Schibsted Grotesk', sans-serif" }
+        : { color: '#a99c87', fontWeight: 600, background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px', fontFamily: "'Schibsted Grotesk', sans-serif" },
+      esStyle: lang === 'es'
+        ? { color: '#221c14', fontWeight: 700, background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px', fontFamily: "'Schibsted Grotesk', sans-serif" }
+        : { color: '#a99c87', fontWeight: 600, background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px', fontFamily: "'Schibsted Grotesk', sans-serif" },
+      ctaStyle: { background: accent, color: '#fdfaf3' },
+      ctaSmallStyle: { background: accent, color: '#fdfaf3' },
+      ctaCards
+    };
+  }
+}
+</script>
+</body>
+</html>
