@@ -43,8 +43,7 @@
     return `
   <nav class="nav-inner">
     <a href="${home}#top" class="nav-logo">
-      <span class="nav-logo-box"><span class="nav-logo-dot"></span></span>
-      <span class="nav-logo-name">Vestaform</span>
+      <span class="nav-logo-name">vestaform</span>
     </a>
     <div class="nav-links" id="nav-links">
         ${links}
