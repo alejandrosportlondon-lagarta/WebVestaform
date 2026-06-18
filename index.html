@@ -387,7 +387,7 @@
 <div class="showcase">
   <div class="anim-up-4" style="position:relative;">
     <div class="showcase-image-wrap">
-      <img src="project/images/home-hero-v2.png" alt="Completed Vestaform space">
+      <img src="project/images/home-hero-v2.png" alt="">
       <div class="showcase-image-sheen"></div>
       <span class="img-badge" data-i18n="hero.imgTag"></span>
     </div>
@@ -530,7 +530,7 @@
   <div class="case-inner">
     <div class="case-grid">
       <div class="case-image-wrap">
-        <img src="project/images/dental-company.png" alt="Dental Company clinic reception">
+        <img src="project/images/dental-company.png" alt="" data-case-img>
         <span class="img-badge" data-i18n="case.client"></span>
       </div>
       <div>
@@ -614,8 +614,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Vestaform. <span data-i18n="footer.rights"></span></span>
-      <span>Madrid · España</span>
+      <span><span data-i18n="footer.copy"></span> <span data-i18n="footer.rights"></span></span>
+      <span data-i18n="footer.location"></span>
     </div>
   </div>
 </footer>
@@ -624,15 +624,16 @@
 // ── Translations ─────────────────────────────────────────────────────────────
 const TRANSLATIONS = {
   en: {
-    a11y: { skip: 'Skip to content' },
-    nav: { approach: 'Approach', os: 'Vestaform OS', industries: 'Industries', design: 'Vestaform Design', work: 'Work', about: 'Why us', cta: 'Book a Discovery Call' },
+    meta: { title: 'Vestaform — We Create Spaces Where People Perform Better' },
+    a11y: { skip: 'Skip to content', langToggle: 'Language', menuToggle: 'Menu' },
+    nav: { approach: 'Approach', os: 'Vestaform OS', industries: 'Industries', design: 'Vestaform Design', work: 'Work', about: 'Why Vestaform', cta: 'Book a Discovery Call' },
     hero: {
       eyebrow: 'Workplace · Hospitality · Commercial',
       h1pre: 'We create spaces where people ', h1post: ' better.',
       words: ['perform', 'focus', 'connect', 'thrive', 'belong'],
-      sub: 'From workplace strategy and design to procurement, project management and installation — Vestaform delivers exceptional environments for ambitious companies.',
+      sub: 'One partner from concept to completion — delivering exceptional workplaces, hospitality and commercial environments across Europe.',
       cta1: 'Book a Discovery Call', cta2: 'See how it works',
-      imgTag: 'Completed space'
+      imgTag: 'Completed Vestaform workspace'
     },
     dash: {
       live: 'Live', project: 'Active project', strategy: 'Strategy', design: 'Design',
@@ -682,7 +683,8 @@ const TRANSLATIONS = {
       kicker: 'Case study', client: 'Dental Company', title: 'Scaling a national clinic network across Spain.',
       body: 'A multi-site rollout delivered as one programme — designed, sourced, managed and installed clinic by clinic, with full visibility at every step.',
       metrics: [{ n: '24', l: 'Clinics delivered' }, { n: '18k', l: 'Products sourced' }, { n: '€6.4M', l: 'Budget managed' }, { n: '98%', l: 'On-time delivery' }],
-      quote: 'Clients buy outcomes, not furniture.'
+      quote: 'Clients buy outcomes, not furniture.',
+      imgAlt: 'Dental Company clinic reception'
     },
     why: {
       kicker: 'Why Vestaform', title: 'Not a studio. A delivery partner.', col1: 'Traditional studio', col2: 'Vestaform',
@@ -696,22 +698,23 @@ const TRANSLATIONS = {
     },
     vision: {
       kicker: 'The vision', title: 'The operating system for physical spaces.',
-      body: 'Not another design studio. The platform companies use to design, procure, manage, track and operate their environments — across Europe.',
+      body: 'Not another design studio. The end-to-end platform that lets ambitious companies treat their physical spaces like they treat their software — controlled, updated and visible at every stage.',
       pills: ['Design', 'Procure', 'Manage', 'Track', 'Operate']
     },
     cta: { title: 'Let’s build the space your business deserves.', sub: 'Tell us where you’re headed. We’ll show you how Vestaform gets you there.', btn: 'Book a Discovery Call' },
-    footer: { tag: 'We don’t sell furniture. We deliver environments.', rights: 'All rights reserved.' }
+    footer: { tag: 'We don’t sell furniture. We deliver environments.', rights: 'All rights reserved.', copy: '© 2026 Vestaform.', location: 'Madrid · Spain' }
   },
   es: {
-    a11y: { skip: 'Saltar al contenido' },
-    nav: { approach: 'Enfoque', os: 'Vestaform OS', industries: 'Sectores', design: 'Vestaform Design', work: 'Proyectos', about: 'Por qué', cta: 'Reserva una llamada' },
+    meta: { title: 'Vestaform — Creamos Espacios Donde las Personas Rinden Mejor' },
+    a11y: { skip: 'Saltar al contenido', langToggle: 'Idioma', menuToggle: 'Menú' },
+    nav: { approach: 'Enfoque', os: 'Vestaform OS', industries: 'Sectores', design: 'Vestaform Design', work: 'Proyectos', about: 'Por qué Vestaform', cta: 'Reserva una llamada' },
     hero: {
       eyebrow: 'Oficinas · Hostelería · Comercial',
       h1pre: 'Creamos espacios donde las personas ', h1post: ' mejor.',
-      words: ['rinden', 'colaboran', 'se concentran', 'prosperan', 'conectan'],
-      sub: 'Desde la estrategia y el diseño de espacios hasta la compra, la gestión de proyectos y la instalación: Vestaform entrega entornos excepcionales para empresas ambiciosas.',
+      words: ['rinden', 'colaboran', 'se enfocan', 'prosperan', 'conectan'],
+      sub: 'Un solo socio del concepto a la entrega — entornos excepcionales de trabajo, hostelería y espacios comerciales en toda Europa.',
       cta1: 'Reserva una llamada', cta2: 'Descubre cómo funciona',
-      imgTag: 'Espacio terminado'
+      imgTag: 'Espacio de trabajo Vestaform terminado'
     },
     dash: {
       live: 'En vivo', project: 'Proyecto activo', strategy: 'Estrategia', design: 'Diseño',
@@ -761,7 +764,8 @@ const TRANSLATIONS = {
       kicker: 'Caso de éxito', client: 'Dental Company', title: 'Escalando una red nacional de clínicas en España.',
       body: 'Un despliegue multisede entregado como un solo programa — diseñado, aprovisionado, gestionado e instalado clínica a clínica, con visibilidad total en cada paso.',
       metrics: [{ n: '24', l: 'Clínicas entregadas' }, { n: '18k', l: 'Productos comprados' }, { n: '€6,4M', l: 'Presupuesto gestionado' }, { n: '98%', l: 'Entrega a tiempo' }],
-      quote: 'Los clientes compran resultados, no muebles.'
+      quote: 'Los clientes compran resultados, no muebles.',
+      imgAlt: 'Recepción de clínica Dental Company'
     },
     why: {
       kicker: 'Por qué Vestaform', title: 'No un estudio. Un socio de entrega.', col1: 'Estudio tradicional', col2: 'Vestaform',
@@ -775,11 +779,11 @@ const TRANSLATIONS = {
     },
     vision: {
       kicker: 'La visión', title: 'El sistema operativo de los espacios físicos.',
-      body: 'No otro estudio de diseño. La plataforma que las empresas usan para diseñar, comprar, gestionar, seguir y operar sus entornos — en toda Europa.',
+      body: 'No otro estudio de diseño. La plataforma que permite a las empresas ambiciosas gestionar sus espacios físicos con la misma visibilidad y control que el software.',
       pills: ['Diseñar', 'Comprar', 'Gestionar', 'Seguir', 'Operar']
     },
     cta: { title: 'Construyamos el espacio que tu negocio merece.', sub: 'Cuéntanos a dónde vas. Te mostramos cómo Vestaform te lleva allí.', btn: 'Reserva una llamada' },
-    footer: { tag: 'No vendemos muebles. Entregamos entornos.', rights: 'Todos los derechos reservados.' }
+    footer: { tag: 'No vendemos muebles. Entregamos entornos.', rights: 'Todos los derechos reservados.', copy: '© 2026 Vestaform.', location: 'Madrid · España' }
   }
 };
 
@@ -943,6 +947,17 @@ function updateI18n() {
   });
 }
 
+// ── Meta / attribute i18n (title, alts, aria-labels) ─────────────────────────
+function updateMeta() {
+  document.title = t().meta.title;
+  const heroImg = document.querySelector('.showcase-image-wrap img');
+  if (heroImg) heroImg.alt = t().hero.imgTag;
+  const caseImg = document.querySelector('[data-case-img]');
+  if (caseImg) caseImg.alt = t().case.imgAlt;
+  document.querySelector('.lang-toggle').setAttribute('aria-label', t().a11y.langToggle);
+  document.getElementById('nav-toggle').setAttribute('aria-label', t().a11y.menuToggle);
+}
+
 // ── Language buttons ──────────────────────────────────────────────────────────
 function updateLangButtons() {
   const active = { color: '#0f0e0d', fontWeight: 700 };
@@ -1011,6 +1026,7 @@ function startWordTimer() {
 // ── Full render ───────────────────────────────────────────────────────────────
 function renderAll() {
   updateI18n();
+  updateMeta();
   updateLangButtons();
   renderWord();
   renderModelTabs();
