@@ -72,6 +72,48 @@
 .d-cta-action { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; text-decoration: none; font-size: 14.5px; font-weight: 600; color: var(--accent); transition: gap 0.15s; }
 .d-cta-action:hover { gap: 12px; }
 
+/* Collection */
+.d-col { max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 100px) 32px 32px; }
+.d-col-intro { max-width: 60ch; font-size: 17px; line-height: 1.6; color: #3a3731; margin: 18px 0 0; }
+.d-col-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 36px; padding-bottom: 22px; border-bottom: 1px solid #e2e0db; }
+.d-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.d-chip { cursor: pointer; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13.5px; font-weight: 600; padding: 9px 16px; border-radius: 30px; border: 1px solid #d8d5d0; background: transparent; color: #3a3731; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.d-chip:hover { border-color: #b9b5af; }
+.d-chip[aria-pressed="true"] { background: #0f0e0d; border-color: #0f0e0d; color: #fdfaf3; }
+.d-viewtoggle { display: inline-flex; align-items: center; gap: 2px; background: #ecebe8; border: 1px solid #dddbd6; border-radius: 30px; padding: 3px; }
+.d-view-btn { cursor: pointer; font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 24px; border: none; background: transparent; color: #6a6560; transition: background 0.2s, color 0.2s; }
+.d-view-btn[aria-pressed="true"] { background: #fff; color: #0f0e0d; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+/* detailed view */
+.d-prod { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 4vw, 60px); align-items: center; padding: clamp(40px, 5vw, 60px) 0; border-bottom: 1px solid #e2e0db; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both; }
+.d-prod:nth-child(even) .d-prod-media { order: 2; }
+.d-prod-media { position: relative; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; border: 1px solid #d8d5d0; background: linear-gradient(135deg, #e8e6e2, #d4d0c8); }
+.d-prod-media image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.d-prod-badge { position: absolute; left: 16px; top: 14px; pointer-events: none; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fdfaf3; background: rgba(15,14,13,0.6); padding: 4px 9px; border-radius: 20px; backdrop-filter: blur(4px); }
+.d-prod-tagline { font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.d-prod-name { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.05; letter-spacing: -0.01em; margin: 10px 0 0; }
+.d-prod-desc { font-size: 16.5px; line-height: 1.6; color: #3a3731; margin: 14px 0 0; max-width: 46ch; }
+.d-spec { margin: 24px 0 0; }
+.d-spec-row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 13px 0; border-top: 1px solid #e2e0db; }
+.d-spec-row:last-child { border-bottom: 1px solid #e2e0db; }
+.d-spec-row dt { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6a6560; }
+.d-spec-row dd { margin: 0; font-size: 15px; color: #1a1918; }
+.d-prod-req { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; text-decoration: none; font-size: 14.5px; font-weight: 600; color: var(--accent); transition: gap 0.15s; }
+.d-prod-req:hover { gap: 12px; }
+/* grid view */
+.d-prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.d-prod-card { border-radius: 9px; overflow: hidden; border: 1px solid #d8d5d0; background: #f2f1ef; transition: border-color 0.2s, transform 0.2s; animation: vfPanel 0.45s cubic-bezier(0.2,0.7,0.2,1) both; }
+.d-prod-card:hover { border-color: #c2bfb9; transform: translateY(-3px); }
+.d-prod-card-media { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8e6e2, #d4d0c8); }
+.d-prod-card-media image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.d-prod-card-body { padding: 20px 22px 24px; }
+.d-prod-card-name { font-size: 19px; font-weight: 600; color: #0f0e0d; }
+.d-prod-card-tag { font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+.d-prod-card-mat { font-size: 14px; line-height: 1.5; color: #6a6560; margin-top: 10px; }
+/* empty state */
+.d-empty { text-align: center; padding: clamp(48px, 7vw, 80px) 0; }
+.d-empty-t { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 26px; color: #0f0e0d; }
+.d-empty-d { font-size: 16px; line-height: 1.6; color: #6a6560; margin: 12px auto 0; max-width: 44ch; }
+
 /* Responsive */
 @media (max-width: 880px) {
   .d-hero-grid, .d-story-head { grid-template-columns: 1fr; gap: 32px; }
@@ -79,10 +121,15 @@
   .d-cta-cards { grid-template-columns: 1fr; }
   .d-pillars { grid-template-columns: 1fr; }
   .d-hero-tag { right: 12px; }
+  .d-prod { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
+  .d-prod:nth-child(even) .d-prod-media { order: 0; }
+  .d-prod-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .d-hero, .d-story-inner, .d-cap, .d-cta { padding-left: 20px; padding-right: 20px; }
+  .d-hero, .d-story-inner, .d-cap, .d-cta, .d-col { padding-left: 20px; padding-right: 20px; }
   .d-cap-grid { grid-template-columns: 1fr; }
+  .d-prod-grid { grid-template-columns: 1fr; }
+  .d-col-controls { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -135,8 +182,17 @@
     </div>
   </section>
 
+  <!-- COLLECTION -->
+  <section id="collection" class="d-col">
+    <div class="kicker"><span class="kicker-line"></span><span data-i18n="collection.kicker"></span></div>
+    <h2 class="section-h2" data-i18n="collection.title"></h2>
+    <p class="d-col-intro" data-i18n="collection.intro"></p>
+    <div class="d-col-controls" id="d-col-controls"></div>
+    <div id="d-collection"></div>
+  </section>
+
   <!-- CAPABILITIES -->
-  <section id="collection" class="d-cap">
+  <section id="making" class="d-cap">
     <div class="kicker"><span class="kicker-line"></span><span data-i18n="cap.kicker"></span></div>
     <h2 class="section-h2" data-i18n="cap.title"></h2>
     <p class="d-cap-intro" data-i18n="cap.intro"></p>
@@ -218,6 +274,17 @@ const T = {
         { n: 'D', t: 'Custom & contract', d: 'Bespoke sizes and contract-grade builds for large rollouts.' }
       ]
     },
+    collection: {
+      kicker: 'The collection',
+      title: 'Designed by us. Made by us.',
+      intro: 'A growing family of seating, tables and soft pieces — each available in multiple sizes, fabrics and finishes. Filter by family, or switch between detailed specs and the gallery.',
+      all: 'All', detailed: 'Detailed', grid: 'Grid',
+      specMaterials: 'Materials', specDimensions: 'Dimensions', specFinishes: 'Finishes',
+      requestThis: 'Request this piece',
+      emptyTitle: 'Made to order',
+      emptyBody: 'Pieces in this family are produced in-house to your specification. Tell us what you need and we’ll prepare options and a quote.',
+      emptyCta: 'Request the catalogue'
+    },
     cta: {
       title: 'Bring Vestaform Design into your project.',
       sub: 'Whether you need three chairs or a full fit-out, we design, manufacture and deliver — with full visibility through Vestaform OS.',
@@ -260,6 +327,17 @@ const T = {
         { n: 'D', t: 'A medida y contract', d: 'Tamaños a medida y construcción contract para grandes despliegues.' }
       ]
     },
+    collection: {
+      kicker: 'La colección',
+      title: 'Diseñado por nosotros. Fabricado por nosotros.',
+      intro: 'Una familia creciente de asientos, mesas y piezas tapizadas — cada una disponible en varios tamaños, tejidos y acabados. Filtra por familia o alterna entre fichas detalladas y galería.',
+      all: 'Todo', detailed: 'Detalle', grid: 'Galería',
+      specMaterials: 'Materiales', specDimensions: 'Dimensiones', specFinishes: 'Acabados',
+      requestThis: 'Solicitar esta pieza',
+      emptyTitle: 'Hecho bajo pedido',
+      emptyBody: 'Las piezas de esta familia se producen en casa según tu especificación. Cuéntanos qué necesitas y preparamos opciones y presupuesto.',
+      emptyCta: 'Pide el catálogo'
+    },
     cta: {
       title: 'Lleva Vestaform Design a tu proyecto.',
       sub: 'Tanto si necesitas tres sillas como un proyecto completo, diseñamos, fabricamos y entregamos — con visibilidad total a través de Vestaform OS.',
@@ -279,6 +357,81 @@ const ICONS = {
   download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
   diamond: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 22 12 12 22 2 12Z"/></svg>'
 };
+
+// ── Product collection ───────────────────────────────────────────────────────
+// Category keys → bilingual labels (used for filter chips + the on-image badge).
+const CATEGORIES = {
+  seating: { en: 'Soft Seating', es: 'Asientos' },
+  sofas:   { en: 'Sofas',        es: 'Sofás' },
+  tables:  { en: 'Tables',       es: 'Mesas' },
+  screens: { en: 'Screens',      es: 'Separadores' }
+};
+
+// SoftSystem / Otter / Ale Table: copy from the original Vestaform Design prototype.
+// Kimono / Levier: DRAFT placeholder copy — see TODO notes; confirm before publishing.
+const PRODUCTS = [
+  { key: 'soft', name: 'SoftSystem', cats: ['seating', 'sofas'], slot: 'vf-prod-softsystem',
+    en: { tagline: 'Modular soft seating',
+      desc: 'Our modular Soft System gives you a wide choice of configuration options, making it adaptable to any environment — from casual seating to hotel lounges, waiting areas and offices.',
+      materials: 'Solid beech frame · high-resilience foam · wool-blend or bouclé upholstery',
+      dimensions: 'Module 80 × 80 × 72 cm · configurable runs, corners & islands',
+      finishes: '40+ fabrics · contrast piping · upholstered or exposed base' },
+    es: { tagline: 'Asiento modular',
+      desc: 'Nuestro Soft System modular ofrece una amplia gama de configuraciones, adaptándose a cualquier entorno — desde asientos informales hasta lounges de hotel, salas de espera y oficinas.',
+      materials: 'Estructura de haya maciza · espuma de alta resiliencia · tapicería de mezcla de lana o bouclé',
+      dimensions: 'Módulo 80 × 80 × 72 cm · composiciones, esquinas e islas configurables',
+      finishes: '+40 tejidos · ribete en contraste · base tapizada o vista' } },
+
+  { key: 'otter', name: 'Otter', cats: ['seating'], slot: 'vf-prod-otter',
+    en: { tagline: 'Stackable chair',
+      desc: 'Otter is a stackable, lightweight chair that combines personality with functionality. Its wide back and lightweight structure are designed to deliver maximum comfort and support.',
+      materials: 'Powder-coated steel rod · polypropylene shell · optional upholstered seat pad',
+      dimensions: 'W 54 × D 55 × H 79 cm · seat height 46 cm · stacks up to 8',
+      finishes: '12 shell colours · 6 frame finishes' },
+    es: { tagline: 'Silla apilable',
+      desc: 'Otter es una silla apilable y ligera que combina personalidad y funcionalidad. Su respaldo ancho y su estructura ligera están diseñados para ofrecer el máximo confort y apoyo.',
+      materials: 'Varilla de acero con recubrimiento en polvo · carcasa de polipropileno · cojín tapizado opcional',
+      dimensions: 'An 54 × Pr 55 × Al 79 cm · altura de asiento 46 cm · apilable hasta 8',
+      finishes: '12 colores de carcasa · 6 acabados de estructura' } },
+
+  // TODO(confirm): Kimono — placeholder name, specs & category. Verify before publishing.
+  { key: 'kimono', name: 'Kimono', cats: ['screens'], slot: 'vf-prod-kimono', draft: true,
+    en: { tagline: 'Acoustic screen',
+      desc: 'Kimono is a free-standing acoustic screen that softens open-plan noise while shaping flexible zones — wrapping teams in calm without closing the space off.',
+      materials: 'PET acoustic felt · powder-coated steel feet · optional linking brackets',
+      dimensions: 'W 60–180 × H 140 cm · 28 mm panel · floor or castor base',
+      finishes: '14 felt colours · single or double-sided' },
+    es: { tagline: 'Separador acústico',
+      desc: 'Kimono es un separador acústico exento que reduce el ruido en espacios abiertos y crea zonas flexibles — envolviendo a los equipos en calma sin cerrar el espacio.',
+      materials: 'Fieltro acústico PET · pies de acero lacado · soportes de unión opcionales',
+      dimensions: 'An 60–180 × Al 140 cm · panel de 28 mm · base a suelo o con ruedas',
+      finishes: '14 colores de fieltro · una o dos caras' } },
+
+  { key: 'ale', name: 'Ale Table', cats: ['tables'], slot: 'vf-prod-ale',
+    en: { tagline: 'Table family',
+      desc: 'The Ale family is available in a variety of sizes and finishes, with round, square or squircle table tops to suit any setting — from meeting rooms to cafés.',
+      materials: 'Steel or solid-oak base · FENIX, oak veneer or linoleum top',
+      dimensions: 'Ø 70–140 cm · H 73 cm dining / H 40 cm coffee',
+      finishes: 'Round · square · squircle · 3 base & 8 top finishes' },
+    es: { tagline: 'Familia de mesas',
+      desc: 'La familia Ale está disponible en una variedad de tamaños y acabados, con tableros redondos, cuadrados o squircle para adaptarse a cualquier espacio — de salas de reunión a cafeterías.',
+      materials: 'Base de acero o roble macizo · tablero FENIX, chapa de roble o linóleo',
+      dimensions: 'Ø 70–140 cm · Al 73 cm comedor / Al 40 cm centro',
+      finishes: 'Redondo · cuadrado · squircle · 3 bases y 8 acabados de tablero' } },
+
+  // TODO(confirm): Levier — placeholder name, specs & category. Verify before publishing.
+  { key: 'levier', name: 'Levier', cats: ['tables'], slot: 'vf-prod-levier', draft: true,
+    en: { tagline: 'Height-adjustable desk',
+      desc: 'Levier is a sit-stand desk driven by a single, intuitive lever — no motors, no cables. A counter-balanced mechanism moves it from sitting to standing in one smooth, silent pull.',
+      materials: 'Counter-balanced steel frame · solid-oak or laminate top',
+      dimensions: 'W 120–180 × D 70/80 cm · H 68–116 cm range',
+      finishes: '3 frame colours · 8 tops · optional cable tray' },
+    es: { tagline: 'Mesa elevable',
+      desc: 'Levier es una mesa sit-stand accionada por una única palanca intuitiva — sin motores ni cables. Un mecanismo contrapesado la mueve de sentado a de pie con un gesto suave y silencioso.',
+      materials: 'Estructura de acero contrapesada · tablero de roble macizo o laminado',
+      dimensions: 'An 120–180 × Pr 70/80 cm · Al 68–116 cm de recorrido',
+      finishes: '3 colores de estructura · 8 tableros · pasacables opcional' } }
+];
 
 let lang = 'en';
 function t() { return T[lang]; }
@@ -321,7 +474,88 @@ function renderLists() {
       <a href="../index.html#contact" class="d-cta-action">${c.action} <span>→</span></a>
     </div>`).join('');
 }
-function renderAll() { updateI18n(); updateLangButtons(); renderLists(); }
+// ── Collection (filter chips + detailed/grid toggle) ─────────────────────────
+let colView = 'detailed';   // 'detailed' | 'grid'
+let colFilter = 'all';      // 'all' | category key
+
+function usedCategories() {
+  const used = [];
+  PRODUCTS.forEach(p => p.cats.forEach(c => { if (!used.includes(c)) used.push(c); }));
+  return used;
+}
+function renderCollection() {
+  const c = t().collection;
+
+  // Control bar: filter chips + view toggle
+  const chips = ['all', ...usedCategories()].map(k => {
+    const label = k === 'all' ? c.all : CATEGORIES[k][lang];
+    return `<button class="d-chip" aria-pressed="${colFilter === k}" onclick="setColFilter('${k}')">${label}</button>`;
+  }).join('');
+  document.getElementById('d-col-controls').innerHTML = `
+    <div class="d-chips">${chips}</div>
+    <div class="d-viewtoggle" role="group" aria-label="${c.detailed} / ${c.grid}">
+      <button class="d-view-btn" aria-pressed="${colView === 'detailed'}" onclick="setColView('detailed')">${c.detailed}</button>
+      <button class="d-view-btn" aria-pressed="${colView === 'grid'}" onclick="setColView('grid')">${c.grid}</button>
+    </div>`;
+
+  // Results (only the active view is in the DOM → each image-slot id stays unique)
+  const list = PRODUCTS.filter(p => colFilter === 'all' || p.cats.includes(colFilter));
+  const box = document.getElementById('d-collection');
+
+  if (!list.length) {
+    box.innerHTML = `
+      <div class="d-empty">
+        <div class="d-empty-t">${c.emptyTitle}</div>
+        <p class="d-empty-d">${c.emptyBody}</p>
+        <a href="../index.html#contact" class="btn-cta-lg btn-glass" style="margin-top:22px">${c.emptyCta} <span>→</span></a>
+      </div>`;
+    return;
+  }
+
+  if (colView === 'grid') {
+    box.innerHTML = `<div class="d-prod-grid">` + list.map(p => {
+      const x = p[lang];
+      return `
+      <div class="d-prod-card">
+        <div class="d-prod-card-media">
+          <image-slot id="${p.slot}" shape="rect" fit="cover" placeholder="Drop ${p.name} photo"></image-slot>
+          <div class="d-prod-badge">${CATEGORIES[p.cats[0]][lang]}</div>
+        </div>
+        <div class="d-prod-card-body">
+          <div class="d-prod-card-name">${p.name}</div>
+          <div class="d-prod-card-tag">${x.tagline}</div>
+          <div class="d-prod-card-mat">${x.materials}</div>
+        </div>
+      </div>`;
+    }).join('') + `</div>`;
+  } else {
+    box.innerHTML = list.map(p => {
+      const x = p[lang];
+      return `
+      <article class="d-prod">
+        <div class="d-prod-media">
+          <image-slot id="${p.slot}" shape="rect" fit="cover" placeholder="Drop ${p.name} photo"></image-slot>
+          <div class="d-prod-badge">${CATEGORIES[p.cats[0]][lang]}</div>
+        </div>
+        <div>
+          <div class="d-prod-tagline">${x.tagline}</div>
+          <h3 class="d-prod-name">${p.name}</h3>
+          <p class="d-prod-desc">${x.desc}</p>
+          <dl class="d-spec">
+            <div class="d-spec-row"><dt>${c.specMaterials}</dt><dd>${x.materials}</dd></div>
+            <div class="d-spec-row"><dt>${c.specDimensions}</dt><dd>${x.dimensions}</dd></div>
+            <div class="d-spec-row"><dt>${c.specFinishes}</dt><dd>${x.finishes}</dd></div>
+          </dl>
+          <a href="../index.html#contact" class="d-prod-req">${c.requestThis} <span>→</span></a>
+        </div>
+      </article>`;
+    }).join('');
+  }
+}
+function setColView(v) { colView = v; renderCollection(); }
+function setColFilter(f) { colFilter = f; renderCollection(); }
+
+function renderAll() { updateI18n(); updateLangButtons(); renderLists(); renderCollection(); }
 
 // Globals referenced by <site-nav>'s inline handlers
 function setLang(l) { lang = l; document.documentElement.lang = l; renderAll(); }
