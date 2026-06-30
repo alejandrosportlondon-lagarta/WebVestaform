@@ -7,17 +7,57 @@
    ========================================================================== */
 
 /* ── Base & tokens ─────────────────────────────────────────────────────────── */
-:root { --accent: #bd562e; --bg: #f7f6f4; }
+:root {
+  /* Raw palette — Vestaform green/beige brandbook */
+  --forest:#002324; --juniper:#394C45; --deep-moss:#5D7267; --moss:#A1AD95; --sage:#C9D0C1;
+  --warm-beige:#EDE5DD; --sand:#E6DED1; --linen:#F7F2EB; --stone:#BFB3A6; --taupe:#9A8C80;
+  --lime:#EBFACF; --charcoal:#2B2B2B; --white:#FFFFFF;
+
+  /* Semantic / role tokens — light surfaces */
+  --bg:var(--linen);                    /* page canvas */
+  --bg-band:var(--warm-beige);          /* section bands */
+  --card-bg:var(--sand);                /* tinted cards */
+  --card-bg-2:var(--white);             /* raised / hover cells */
+  --text:var(--charcoal);               /* primary body text */
+  --text-strong:var(--forest);          /* headings */
+  --text-secondary:var(--juniper);      /* nav links, body-2 */
+  --text-muted:var(--deep-moss);        /* AA-safe muted (NOT taupe — fails AA on linen) */
+  --border:var(--stone);                /* hairlines on light */
+  --border-soft:var(--sand);            /* faintest dividers */
+  --accent:var(--deep-moss);            /* accent TYPE: kicker-line, active dots, italic words */
+  --accent-tint:rgba(57,76,69,0.16);    /* faint juniper wash behind icons/badges */
+  --cta-bg:var(--forest);               /* CTA fill = deep green moment */
+  --cta-bg-hover:var(--juniper);        /* CTA hover lightens */
+  --cta-text:var(--linen);              /* text on CTA */
+  --link-hover:var(--forest);
+
+  /* Dark surfaces — deep green panels (replace old near-black warm panels) */
+  --panel-bg:var(--forest);
+  --panel-bg-2:#051f1d;                 /* very-dark green section bg */
+  --panel-raised:var(--juniper);        /* cards on dark */
+  --panel-border:#0d3733;               /* hairlines on dark */
+  --panel-text:var(--sand);             /* primary text on dark */
+  --panel-text-muted:var(--moss);       /* muted text on dark */
+  --panel-kicker:var(--moss);
+
+  /* Status / highlight */
+  --success:var(--moss);                /* "Live"/"On track" text — desaturated */
+  --success-soft:var(--sage);
+  --highlight:var(--lime);              /* tiny accents only: live dot, micro-underline, glow */
+
+  /* Shadows — green-neutral, not warm */
+  --shadow-panel:0 30px 60px -20px rgba(0,35,36,0.45), 0 8px 20px -8px rgba(0,35,36,0.35);
+}
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: 'Schibsted Grotesk', system-ui, sans-serif;
-  background: #f7f6f4;
-  color: #0f0e0d;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
-::selection { background: #bd562e; color: #fdfaf3; }
+::selection { background: var(--accent); color: var(--linen); }
 a { color: inherit; }
 
 /* ── Animations ────────────────────────────────────────────────────────────── */
@@ -43,8 +83,8 @@ site-nav { display: block; min-height: 60px; }   /* custom elements default to i
 .nav {
   position: sticky; top: 0; z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(247,246,244,0.88);
-  border-bottom: 1px solid #e2e0db;
+  background: rgba(247,242,235,0.88);
+  border-bottom: 1px solid var(--border);
 }
 .nav-inner {
   max-width: 1240px; margin: 0 auto;
@@ -53,33 +93,33 @@ site-nav { display: block; min-height: 60px; }   /* custom elements default to i
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
 .nav-logo-name {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: #0a0a0a;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px; font-weight: 700; letter-spacing: 0; color: var(--text-strong);
 }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a {
-  text-decoration: none; color: #3a3731; font-size: 14.5px; font-weight: 500;
+  text-decoration: none; color: var(--text-secondary); font-size: 14.5px; font-weight: 500;
   transition: color 0.15s; cursor: pointer;
 }
-.nav-links a:hover { color: #0f0e0d; }
-.nav-links a.is-active { color: #0f0e0d; font-weight: 700; display: inline-flex; align-items: center; gap: 7px; }
+.nav-links a:hover { color: var(--text-strong); }
+.nav-links a.is-active { color: var(--text-strong); font-weight: 700; display: inline-flex; align-items: center; gap: 7px; }
 .nav-links a.is-active::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .nav-right { display: flex; align-items: center; gap: 18px; }
 .lang-toggle { display: flex; align-items: center; gap: 2px; font-size: 13px; font-weight: 600; }
 .lang-toggle button {
   background: transparent; border: none; cursor: pointer; padding: 2px 4px;
-  font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
   transition: color 0.15s; min-height: 40px; min-width: 34px;
 }
-.lang-toggle .sep { color: #c8c5c0; }
+.lang-toggle .sep { color: var(--stone); }
 
 /* Mobile nav toggle */
 .nav-toggle {
-  display: none; background: transparent; border: 1px solid #d8d5d0; border-radius: 4px;
+  display: none; background: transparent; border: 1px solid var(--border); border-radius: 4px;
   width: 40px; height: 40px; cursor: pointer; align-items: center; justify-content: center;
 }
 .nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after {
-  content: ''; display: block; width: 18px; height: 1.5px; background: #0f0e0d; position: relative;
+  content: ''; display: block; width: 18px; height: 1.5px; background: var(--text-strong); position: relative;
 }
 .nav-toggle-bars::before { position: absolute; top: -5px; }
 .nav-toggle-bars::after { position: absolute; top: 5px; }
@@ -88,84 +128,84 @@ site-nav { display: block; min-height: 60px; }   /* custom elements default to i
 .btn-cta {
   display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
   text-decoration: none; padding: 9px 18px; border-radius: 3px;
-  font-size: 14px; font-weight: 600; background: var(--accent); color: #fdfaf3;
+  font-size: 14px; font-weight: 600; background: var(--cta-bg); color: var(--cta-text);
   transition: opacity 0.15s;
 }
 .btn-cta:hover { opacity: 0.9; }
 .btn-cta-lg {
   padding: 14px 26px; border-radius: 3px; font-size: 15px; font-weight: 600; cursor: pointer;
-  background: var(--accent); color: #fdfaf3; text-decoration: none;
+  background: var(--cta-bg); color: var(--cta-text); text-decoration: none;
   display: inline-flex; align-items: center; gap: 9px; transition: opacity 0.15s, transform 0.15s;
 }
 .btn-cta-lg:hover { opacity: 0.9; transform: translateY(-1px); }
 .btn-outline {
   padding: 14px 24px; border-radius: 3px; font-size: 15px; font-weight: 600; cursor: pointer;
-  color: #fdfaf3; border: 1px solid rgba(253,250,243,0.5);
-  background: rgba(253,250,243,0.08); backdrop-filter: blur(4px);
+  color: var(--linen); border: 1px solid rgba(247,242,235,0.5);
+  background: rgba(247,242,235,0.08); backdrop-filter: blur(4px);
   text-decoration: none; transition: background 0.15s;
 }
-.btn-outline:hover { background: rgba(253,250,243,0.18); }
+.btn-outline:hover { background: rgba(247,242,235,0.18); }
 
-/* Frosted-clay glass — layered onto .btn-cta / .btn-cta-lg / .cta-btn.
-   Keeps the clay brand colour while adding glassmorphism. */
+/* Frosted forest-green glass — layered onto .btn-cta / .btn-cta-lg / .cta-btn.
+   Keeps the deep-green brand colour while adding glassmorphism. */
 .btn-glass {
   position: relative;
-  background: rgba(189, 86, 46, 0.62);              /* clay #bd562e @ ~62% */
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.45);      /* subtle 1px light border */
+  background: rgba(0, 35, 36, 0.62);                /* forest #002324 @ ~62% */
+  color: var(--linen);
+  border: 1px solid rgba(255, 255, 255, 0.4);       /* subtle 1px light border */
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
   backdrop-filter: blur(12px) saturate(1.2);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),        /* inner top highlight */
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),        /* inner top highlight */
     inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 6px 18px rgba(33, 28, 20, 0.18);              /* soft outer lift */
-  text-shadow: 0 1px 1px rgba(33, 28, 20, 0.35);    /* holds white text contrast */
+    0 6px 18px rgba(0, 20, 20, 0.2);                /* soft outer lift */
+  text-shadow: 0 1px 1px rgba(0, 20, 20, 0.45);     /* holds light text contrast */
   transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 .btn-glass:hover {
-  background: rgba(189, 86, 46, 0.78);              /* denser on hover */
+  background: rgba(0, 35, 36, 0.8);                 /* denser on hover */
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 8px 24px rgba(33, 28, 20, 0.26);
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 8px 24px rgba(0, 20, 20, 0.3);
   transform: translateY(-1px);
   opacity: 1;
 }
 .btn-glass:active { transform: translateY(0); }
-/* On dark panels the bone-bg highlight reads weakly — raise opacity/border. */
+/* On dark panels the highlight reads weakly — raise opacity/border. */
 .cta-panel .btn-glass, .os-panel .btn-glass {
-  background: rgba(189, 86, 46, 0.7);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(57, 76, 69, 0.72);              /* juniper, lifts off the forest panel */
+  border-color: rgba(255, 255, 255, 0.45);
 }
-.cta-panel .btn-glass:hover, .os-panel .btn-glass:hover { background: rgba(189, 86, 46, 0.85); }
-/* Fallback where backdrop-filter is unsupported → near-solid clay so AA never fails. */
+.cta-panel .btn-glass:hover, .os-panel .btn-glass:hover { background: rgba(57, 76, 69, 0.88); }
+/* Fallback where backdrop-filter is unsupported → near-solid forest so AA never fails. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .btn-glass { background: rgba(189, 86, 46, 0.95); }
+  .btn-glass { background: rgba(0, 35, 36, 0.95); }
 }
 
 /* ── Kicker / section headings ─────────────────────────────────────────────── */
 .kicker {
   display: flex; align-items: center; gap: 9px;
   font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em;
-  text-transform: uppercase; color: #6a6560;
+  text-transform: uppercase; color: var(--text-muted);
 }
 .kicker-line { width: 22px; height: 1px; background: var(--accent); flex: none; }
-.kicker-dark { color: #b6a892; }
+.kicker-dark { color: var(--panel-kicker); }
 .section-h2 {
-  font-family: 'Inter Tight', sans-serif; font-weight: 600;
-  font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02;
-  letter-spacing: -0.01em; margin: 16px 0 0;
+  font-family: 'Playfair Display', Georgia, serif; font-weight: 600;
+  font-size: clamp(34px, 4.4vw, 60px); line-height: 1.08;
+  letter-spacing: 0; margin: 16px 0 0; color: var(--text-strong);
 }
 
 /* ── Footer ────────────────────────────────────────────────────────────────── */
-.footer { border-top: 1px solid #e2e0db; }
+.footer { border-top: 1px solid var(--border); }
 .footer-inner { max-width: 1240px; margin: 0 auto; padding: 56px 32px; }
 .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
 .footer-logo-area { max-width: 30ch; }
-.footer-tagline { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-style: italic; font-size: 20px; line-height: 1.3; color: #3a3731; margin: 18px 0 0; }
+.footer-tagline { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-style: italic; font-size: 20px; line-height: 1.3; color: var(--text-secondary); margin: 18px 0 0; }
 .footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
-.footer-links a { text-decoration: none; color: #3a3731; font-size: 14px; transition: color 0.15s; }
-.footer-links a:hover { color: #0f0e0d; }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 44px; padding-top: 22px; border-top: 1px solid #e2e0db; font-size: 13px; color: #6a6560; }
+.footer-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--text-strong); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
 
 /* ── Accessibility ─────────────────────────────────────────────────────────── */
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
@@ -173,7 +213,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 }
 .skip-link {
   position: absolute; left: 12px; top: -64px; z-index: 100;
-  background: #1b1611; color: #fdfaf3; padding: 10px 16px; border-radius: 4px;
+  background: var(--panel-bg); color: var(--panel-text); padding: 10px 16px; border-radius: 4px;
   font-size: 14px; font-weight: 600; text-decoration: none; transition: top 0.2s;
 }
 .skip-link:focus { top: 12px; }
@@ -192,12 +232,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   .nav-links {
     position: absolute; top: 100%; left: 0; right: 0; display: none;
     flex-direction: column; align-items: stretch; gap: 0;
-    background: rgba(247,246,244,0.98); backdrop-filter: blur(14px);
-    border-bottom: 1px solid #e2e0db; padding: 6px 32px 16px;
+    background: rgba(247,242,235,0.98); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border); padding: 6px 32px 16px;
   }
   .nav.open .nav-links { display: flex; }
   .nav-right .btn-cta { display: none; }
-  .nav-links a { padding: 13px 0; font-size: 16px; border-bottom: 1px solid #e2e0db; }
+  .nav-links a { padding: 13px 0; font-size: 16px; border-bottom: 1px solid var(--border); }
   .nav-links a.is-active::before { display: none; }
 }
 @media (max-width: 768px) {

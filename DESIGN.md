@@ -5,62 +5,97 @@
 > Google Stitch `DESIGN.md` format. Source of truth: `index.html`.
 
 Vestaform is a technology-enabled workplace, hospitality and commercial space
-partner. The brand line — *"We don't sell furniture. We deliver environments."*
-— drives a confident, architectural, premium aesthetic.
+partner. The brand line — *"Spaces that inspire. Solutions that last."*
+— drives a calm, premium, nature-led aesthetic.
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
-- **Mood:** warm, architectural, premium-operator. Reads like a design-and-build
-  studio crossed with a SaaS product surface.
+- **Mood:** soft, natural, premium-operator. Greens and beiges evoke calm,
+  considered environments; reads like a design-and-build studio crossed with a
+  SaaS product surface.
 - **Philosophy:** editorial restraint over decoration. Thin rule-lines, spec/eyebrow
   labels, and squared-off buttons evoke architectural drawings and engineering specs.
-- **Light vs. dark:** a warm "bone paper" light mode is the canvas; dark warm panels
-  (`#1b1611`) are used as deliberate punctuation for product/OS and CTA moments.
+- **Light vs. dark:** a soft "linen" light mode is the canvas; deep **forest-green**
+  panels (`#002324`) are used as deliberate punctuation for product/OS and CTA moments
+  (these replace the old near-black warm panels).
 - **Signature motifs:** the diamond glyph `◆`, accent `kicker-line` rules, faint
-  grid overlays on dark panels, animated "live" product dashboards, and an
-  italic-accent rotating word in the hero headline.
+  grid overlays on dark panels, animated "live" product dashboards, an italic-accent
+  (Playfair) rotating word in the hero headline, and Soft Lime used only as a thin
+  highlight.
 
 ---
 
 ## 2. Color Palette & Roles
 
-| Role | Hex | Usage |
-|------|-----|-------|
-| `bg` / Bone paper | `#efe9dd` | Primary background |
-| Bone variants | `#e7decb`, `#f6f1e7`, `#f3ede1`, `#faf6ec` | Section bands, cards, table cells |
-| Ink (text) | `#221c14` | Primary text, also a dark section bg |
-| Ink secondary | `#4a4133` | Body copy, nav links |
-| Muted label | `#6f6553` | Kickers, eyebrows, footer meta (AA-compliant) |
-| Muted body | `#5d5544` | Card descriptions, metric labels |
-| **Accent — Clay** | `#bd562e` | CTAs, links-on-hover, active states, accent type |
-| Dark panel | `#1b1611` | OS panel, CTA panel, comparison header |
-| Dark panel raised | `#241d15` / `#221b13` / `#2c241a` | Cards on dark |
-| Dark hairline | `#2e2419` / `#3a2e22` | Borders on dark |
-| Light hairline | `#ddd3c0` / `#d2c7b0` | Borders/dividers on bone |
-| Paper text (on dark) | `#fdfaf3` / `#f6efe3` / `#ece4d6` | Text on dark/accent |
-| Success | `#58c873` / `#7fb98e` | "Live" / "On track" status |
+The full palette is exposed as **CSS custom properties** in `vestaform.css :root` —
+a raw-palette tier plus a semantic/role tier. Convert hardcoded hex to `var(--token)`;
+never re-introduce raw hex in components.
 
-`--accent: #bd562e` and `--bg: #efe9dd` are exposed as CSS custom properties.
+**Raw palette**
+
+| Group | Token | Hex |
+|---|---|---|
+| Green | `--forest` | `#002324` |
+| | `--juniper` | `#394C45` |
+| | `--deep-moss` | `#5D7267` |
+| | `--moss` | `#A1AD95` |
+| | `--sage` | `#C9D0C1` |
+| Neutral | `--warm-beige` | `#EDE5DD` |
+| | `--sand` | `#E6DED1` |
+| | `--linen` | `#F7F2EB` |
+| | `--stone` | `#BFB3A6` |
+| | `--taupe` | `#9A8C80` |
+| Accent | `--lime` | `#EBFACF` |
+| | `--charcoal` | `#2B2B2B` |
+| | `--white` | `#FFFFFF` |
+
+**Semantic / role tokens**
+
+| Role | Token → value | Usage |
+|------|---------------|-------|
+| Background | `--bg` → Linen | Primary canvas |
+| Section band | `--bg-band` → Warm Beige | Banded sections |
+| Card | `--card-bg` → Sand · `--card-bg-2` → White | Cards, table cells |
+| Text | `--text` → Charcoal | Primary body |
+| Heading | `--text-strong` → Forest | Headings, logo |
+| Body-2 | `--text-secondary` → Juniper | Nav links, intros |
+| Muted | `--text-muted` → Deep Moss | Kickers, meta (**AA floor on Linen**) |
+| Border | `--border` → Stone | Hairlines on light |
+| **Accent (type)** | `--accent` → Deep Moss | Kicker-line, active dots, italic words |
+| **CTA** | `--cta-bg` → Forest · `--cta-text` → Linen | Buttons (hover → Juniper) |
+| Dark panel | `--panel-bg` → Forest · `--panel-bg-2` → `#051f1d` | OS/CTA/story panels |
+| Panel raised | `--panel-raised` → Juniper | Cards on dark |
+| Panel hairline | `--panel-border` → `#0d3733` | Borders on dark |
+| Panel text | `--panel-text` → Sand · `--panel-text-muted` → Moss | Text on dark |
+| Success | `--success` → Moss | "Live" / "On track" status text |
+| Highlight | `--highlight` → Soft Lime | **Tiny accents only** — live dot, micro-underline, CTA glow |
+
+**Contrast:** Taupe `#9A8C80` on Linen ≈ 2.4:1 — **fails AA for text**; use Deep Moss
+for `--text-muted` and keep Taupe decorative. CTA Linen-on-Forest ≈ 14:1, panel muted
+Moss-on-Forest ≈ 7:1 — both pass. On dark panels, data fills/dots use `--moss` (not
+the Deep-Moss accent) for visibility.
 
 ---
 
 ## 3. Typography Rules
 
-- **Display / titles:** `Inter Tight` (600/700), tight tracking (`-0.01em`→`-0.02em`),
-  line-height `0.98`–`1.04`. Italic + clay accent for emphasis words.
-- **UI / body:** `Schibsted Grotesk` (400–600).
+- **Display / titles:** `Playfair Display` (500/600/700) — a high-contrast serif.
+  Use **near-zero tracking** (`0`, never the old `-0.02em`) and slightly looser
+  line-height (`1.05`–`1.12`) so the strokes breathe. Italic + green accent for
+  emphasis words.
+- **UI / body:** `Montserrat` (300–700).
 - **Fluid scaling** via `clamp()`.
 
 | Token | Size | Font |
 |-------|------|------|
-| Hero H1 | `clamp(44px, 6.6vw, 92px)` | Inter Tight 600 |
-| Section H2 | `clamp(34px, 4.4vw, 60px)` | Inter Tight 600 |
-| Panel title | `clamp(26px, 3vw, 40px)` | Inter Tight 600 |
-| Body | 16–18px / 1.55–1.6 | Schibsted Grotesk |
-| Eyebrow / kicker | 12.5px, `0.14em` tracking, uppercase | Schibsted Grotesk 600 |
-| Spec label | 10–11px, `0.1em` tracking, uppercase | Schibsted Grotesk |
+| Hero H1 | `clamp(44px, 6.6vw, 92px)` | Playfair Display 600, `ls 0` |
+| Section H2 | `clamp(34px, 4.4vw, 60px)` | Playfair Display 600, `ls 0` |
+| Panel title | `clamp(26px, 3vw, 40px)` | Playfair Display 600 |
+| Body | 16–18px / 1.55–1.6 | Montserrat |
+| Eyebrow / kicker | 12.5px, `0.14em` tracking, uppercase | Montserrat 600 |
+| Spec label | 10–11px, `0.1em` tracking, uppercase | Montserrat |
 
 ---
 
@@ -106,15 +141,16 @@ partner. The brand line — *"We don't sell furniture. We deliver environments."
 
 **Do**
 - Keep buttons squared (3–4px) and cards softly rounded (6–10px) — the contrast is intentional.
-- Use clay `#bd562e` sparingly, as an accent — never as a large fill.
+- Reference palette **tokens** (`var(--…)`), never raw hex, in components.
+- Use **Soft Lime `#EBFACF`** only as a thin highlight (live dot, micro-underline, CTA glow) — never a fill or large surface.
 - Pair every section title with an uppercase kicker + accent rule-line.
-- Tint shadows warm; respect `prefers-reduced-motion`.
+- Tint shadows green-neutral (`rgba(0,35,36,…)` / `rgba(0,20,20,…)`); respect `prefers-reduced-motion`.
 - Keep copy measures short (`≤60ch`).
 
 **Don't**
-- Don't introduce cool greys or pure black/white — stay in the warm spectrum.
-- Don't add drop shadows to flat bone surfaces; use 1px hairlines instead.
-- Don't let muted text fall below WCAG AA (use `#6f6553` / `#5d5544`, not lighter).
+- Don't re-introduce the old warm/clay palette or saturated colours — stay soft and desaturated.
+- Don't add drop shadows to flat linen surfaces; use 1px hairlines instead.
+- Don't let muted text fall below WCAG AA — use Deep Moss (`#5D7267`) for muted text on Linen; Taupe is decorative-only.
 - Don't run infinite animations without a reduced-motion fallback.
 
 ---
@@ -134,18 +170,20 @@ partner. The brand line — *"We don't sell furniture. We deliver environments."
 ## 9. Agent Prompt Guide
 
 ```
-Design language: warm architectural-premium. Bone paper #efe9dd canvas, deep warm
-ink #221c14 text, clay accent #bd562e (sparingly), dark warm panels #1b1611 for
-product/CTA moments. Type: Inter Tight (display, tight tracking, italic accent
-words) + Schibsted Grotesk (UI/body). Motifs: thin accent rule-lines, uppercase
-spec/kicker labels, the ◆ glyph, squared 3–4px buttons vs softly rounded 6–10px
-cards, warm-tinted shadows, faint grid overlays on dark surfaces. Keep copy
-measures ≤60ch. Maintain WCAG AA contrast and respect prefers-reduced-motion.
-Tone: confident, operational, editorial — "we deliver environments, not furniture."
+Design language: soft natural-premium. Linen #F7F2EB canvas, charcoal #2B2B2B text
+with forest #002324 headings, deep-moss #5D7267 accent type, forest-green panels
+#002324 for product/CTA moments, soft-lime #EBFACF as a thin highlight only. Type:
+Playfair Display (display serif, near-zero tracking, italic accent words) +
+Montserrat (UI/body). Motifs: thin accent rule-lines, uppercase spec/kicker labels,
+the ◆ glyph, squared 3–4px buttons vs softly rounded 6–10px cards, green-tinted
+shadows, faint grid overlays on dark surfaces. Desaturated, never saturated. Keep
+copy measures ≤60ch. Maintain WCAG AA contrast and respect prefers-reduced-motion.
+Tone: calm, considered, premium — "spaces that inspire, solutions that last."
 ```
 
 **Quick reference**
 
-- Background `#efe9dd` · Text `#221c14` · Accent `#bd562e` · Dark panel `#1b1611`
+- Background `#F7F2EB` · Text `#2B2B2B` · Headings `#002324` · Accent `#5D7267` · Panel `#002324` · Highlight `#EBFACF`
 - Radius: buttons `3–4px`, cards `6–10px`, pills `30px`
-- Fonts: `Inter Tight` (display), `Schibsted Grotesk` (UI/body)
+- Fonts: `Playfair Display` (display), `Montserrat` (UI/body)
+- All colours are CSS tokens in `vestaform.css :root` — use `var(--…)`, not raw hex.
