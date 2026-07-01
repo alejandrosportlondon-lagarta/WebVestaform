@@ -8,10 +8,10 @@
 
 /* ── Base & tokens ─────────────────────────────────────────────────────────── */
 :root {
-  /* Raw palette — Vestaform green/beige brandbook */
-  --forest:#002324; --juniper:#394C45; --deep-moss:#5D7267; --moss:#A1AD95; --sage:#C9D0C1;
-  --warm-beige:#EDE5DD; --sand:#E6DED1; --linen:#F7F2EB; --stone:#BFB3A6; --taupe:#9A8C80;
-  --lime:#EBFACF; --charcoal:#2B2B2B; --white:#FFFFFF;
+  /* Raw palette — Vestaform brandbook v1.0-2025 */
+  --forest:#0C2D28; --juniper:#1E3F38; --deep-moss:#5D7267; --moss:#A8B39A; --sage:#C8D2C0;
+  --warm-beige:#E9DFD3; --sand:#E9DFD3; --linen:#F7F3ED; --stone:#C9BDAE;
+  --terracotta:#C96F4A; --charcoal:#2A2A2A; --white:#FFFFFF;
 
   /* Semantic / role tokens — light surfaces */
   --bg:var(--linen);                    /* page canvas */
@@ -24,18 +24,19 @@
   --text-muted:var(--deep-moss);        /* AA-safe muted (NOT taupe — fails AA on linen) */
   --border:var(--stone);                /* hairlines on light */
   --border-soft:var(--sand);            /* faintest dividers */
-  --accent:var(--deep-moss);            /* accent TYPE: kicker-line, active dots, italic words */
-  --accent-tint:rgba(57,76,69,0.16);    /* faint juniper wash behind icons/badges */
-  --cta-bg:var(--forest);               /* CTA fill = deep green moment */
-  --cta-bg-hover:var(--juniper);        /* CTA hover lightens */
-  --cta-text:var(--linen);              /* text on CTA */
-  --link-hover:var(--forest);
+  --accent:var(--terracotta);           /* accent TYPE: kicker-line, dots, big numbers, italic words */
+  --accent-text:var(--deep-moss);       /* AA-safe accent for small literal text (4.5:1 on Linen) */
+  --accent-tint:rgba(201,111,74,0.16);  /* faint terracotta wash behind icons/badges */
+  --cta-bg:var(--terracotta);           /* CTA fill — accepted ~4.1:1 trade-off, see DESIGN.md */
+  --cta-bg-hover:#A85A39;               /* darker terracotta; reserved (buttons hover via opacity) */
+  --cta-text:var(--forest);             /* text on CTA */
+  --link-hover:var(--terracotta);
 
   /* Dark surfaces — deep green panels (replace old near-black warm panels) */
   --panel-bg:var(--forest);
-  --panel-bg-2:#051f1d;                 /* very-dark green section bg */
+  --panel-bg-2:#071a17;                 /* very-dark green section bg */
   --panel-raised:var(--juniper);        /* cards on dark */
-  --panel-border:#0d3733;               /* hairlines on dark */
+  --panel-border:#163a34;               /* hairlines on dark */
   --panel-text:var(--sand);             /* primary text on dark */
   --panel-text-muted:var(--moss);       /* muted text on dark */
   --panel-kicker:var(--moss);
@@ -43,10 +44,10 @@
   /* Status / highlight */
   --success:var(--moss);                /* "Live"/"On track" text — desaturated */
   --success-soft:var(--sage);
-  --highlight:var(--lime);              /* tiny accents only: live dot, micro-underline, glow */
+  --highlight:var(--terracotta);        /* tiny accents only: live dot, micro-underline, glow */
 
   /* Shadows — green-neutral, not warm */
-  --shadow-panel:0 30px 60px -20px rgba(0,35,36,0.45), 0 8px 20px -8px rgba(0,35,36,0.35);
+  --shadow-panel:0 30px 60px -20px rgba(12,45,40,0.45), 0 8px 20px -8px rgba(12,45,40,0.35);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -150,7 +151,7 @@ site-nav { display: block; min-height: 60px; }   /* custom elements default to i
    Keeps the deep-green brand colour while adding glassmorphism. */
 .btn-glass {
   position: relative;
-  background: rgba(0, 35, 36, 0.62);                /* forest #002324 @ ~62% */
+  background: rgba(201, 111, 74, 0.62);             /* terracotta #C96F4A @ ~62% */
   color: var(--linen);
   border: 1px solid rgba(255, 255, 255, 0.4);       /* subtle 1px light border */
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
@@ -158,28 +159,28 @@ site-nav { display: block; min-height: 60px; }   /* custom elements default to i
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.45),        /* inner top highlight */
     inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 6px 18px rgba(0, 20, 20, 0.2);                /* soft outer lift */
-  text-shadow: 0 1px 1px rgba(0, 20, 20, 0.45);     /* holds light text contrast */
+    0 6px 18px rgba(12, 45, 40, 0.2);                /* soft outer lift */
+  text-shadow: 0 1px 1px rgba(12, 45, 40, 0.45);     /* holds light text contrast */
   transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 .btn-glass:hover {
-  background: rgba(0, 35, 36, 0.8);                 /* denser on hover */
+  background: rgba(201, 111, 74, 0.8);              /* denser on hover */
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 8px 24px rgba(0, 20, 20, 0.3);
+    0 8px 24px rgba(12, 45, 40, 0.3);
   transform: translateY(-1px);
   opacity: 1;
 }
 .btn-glass:active { transform: translateY(0); }
 /* On dark panels the highlight reads weakly — raise opacity/border. */
 .cta-panel .btn-glass, .os-panel .btn-glass {
-  background: rgba(57, 76, 69, 0.72);              /* juniper, lifts off the forest panel */
+  background: rgba(201, 111, 74, 0.72);            /* terracotta, lifts off the forest panel */
   border-color: rgba(255, 255, 255, 0.45);
 }
-.cta-panel .btn-glass:hover, .os-panel .btn-glass:hover { background: rgba(57, 76, 69, 0.88); }
-/* Fallback where backdrop-filter is unsupported → near-solid forest so AA never fails. */
+.cta-panel .btn-glass:hover, .os-panel .btn-glass:hover { background: rgba(201, 111, 74, 0.88); }
+/* Fallback where backdrop-filter is unsupported → near-solid terracotta so it stays legible. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .btn-glass { background: rgba(0, 35, 36, 0.95); }
+  .btn-glass { background: rgba(201, 111, 74, 0.95); }
 }
 
 /* ── Kicker / section headings ─────────────────────────────────────────────── */
