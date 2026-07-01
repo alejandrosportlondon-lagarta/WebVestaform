@@ -81,21 +81,24 @@ the Deep-Moss accent) for visibility.
 
 ## 3. Typography Rules
 
-- **Display / titles:** `Playfair Display` (500/600/700) — a high-contrast serif.
-  Use **near-zero tracking** (`0`, never the old `-0.02em`) and slightly looser
-  line-height (`1.05`–`1.12`) so the strokes breathe. Italic + green accent for
-  emphasis words.
-- **UI / body:** `Montserrat` (300–700).
+- **Display / titles:** `Poppins` (600/700) — a geometric sans. Near-zero tracking
+  (`0`) and line-height `1.05`–`1.12`.
+- **Italic accent words:** headline emphasis words (the hero rotating word, the
+  `em`/`.band-italic` spans, the footer tagline, the case-study pull-quote) stay in
+  `Playfair Display` italic (500/600) — a deliberate serif contrast moment against
+  the Poppins headings, not a general display font.
+- **UI / body:** `Nunito Sans` (300–700).
 - **Fluid scaling** via `clamp()`.
 
 | Token | Size | Font |
 |-------|------|------|
-| Hero H1 | `clamp(44px, 6.6vw, 92px)` | Playfair Display 600, `ls 0` |
-| Section H2 | `clamp(34px, 4.4vw, 60px)` | Playfair Display 600, `ls 0` |
-| Panel title | `clamp(26px, 3vw, 40px)` | Playfair Display 600 |
-| Body | 16–18px / 1.55–1.6 | Montserrat |
-| Eyebrow / kicker | 12.5px, `0.14em` tracking, uppercase | Montserrat 600 |
-| Spec label | 10–11px, `0.1em` tracking, uppercase | Montserrat |
+| Hero H1 | `clamp(44px, 6.6vw, 92px)` | Poppins 600, `ls 0` |
+| Section H2 | `clamp(34px, 4.4vw, 60px)` | Poppins 600, `ls 0` |
+| Panel title | `clamp(26px, 3vw, 40px)` | Poppins 600 |
+| Italic accent word | inherits parent size | Playfair Display italic |
+| Body | 16–18px / 1.55–1.6 | Nunito Sans |
+| Eyebrow / kicker | 12.5px, `0.14em` tracking, uppercase | Nunito Sans 600 |
+| Spec label | 10–11px, `0.1em` tracking, uppercase | Nunito Sans |
 
 ---
 
@@ -173,17 +176,20 @@ the Deep-Moss accent) for visibility.
 Design language: soft natural-premium. Linen #F7F2EB canvas, charcoal #2B2B2B text
 with forest #002324 headings, deep-moss #5D7267 accent type, forest-green panels
 #002324 for product/CTA moments, soft-lime #EBFACF as a thin highlight only. Type:
-Playfair Display (display serif, near-zero tracking, italic accent words) +
-Montserrat (UI/body). Motifs: thin accent rule-lines, uppercase spec/kicker labels,
-the ◆ glyph, squared 3–4px buttons vs softly rounded 6–10px cards, green-tinted
-shadows, faint grid overlays on dark surfaces. Desaturated, never saturated. Keep
-copy measures ≤60ch. Maintain WCAG AA contrast and respect prefers-reduced-motion.
-Tone: calm, considered, premium — "spaces that inspire, solutions that last."
+Poppins (display/headings, near-zero tracking) + Nunito Sans (UI/body), with
+Playfair Display italic reserved for accent/emphasis words (hero rotating word,
+band statement, footer tagline, pull-quotes) as a deliberate serif contrast
+moment — not a general display font. Motifs: thin accent rule-lines, uppercase
+spec/kicker labels, the ◆ glyph, squared 3–4px buttons vs softly rounded 6–10px
+cards, green-tinted shadows, faint grid overlays on dark surfaces. Desaturated,
+never saturated. Keep copy measures ≤60ch. Maintain WCAG AA contrast and respect
+prefers-reduced-motion. Tone: calm, considered, premium — "spaces that inspire,
+solutions that last."
 ```
 
 **Quick reference**
 
 - Background `#F7F2EB` · Text `#2B2B2B` · Headings `#002324` · Accent `#5D7267` · Panel `#002324` · Highlight `#EBFACF`
 - Radius: buttons `3–4px`, cards `6–10px`, pills `30px`
-- Fonts: `Playfair Display` (display), `Montserrat` (UI/body)
+- Fonts: `Poppins` (headings), `Nunito Sans` (UI/body), `Playfair Display` italic (accent/emphasis words only)
 - All colours are CSS tokens in `vestaform.css :root` — use `var(--…)`, not raw hex.
