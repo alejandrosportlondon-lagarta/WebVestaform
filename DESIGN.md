@@ -90,12 +90,13 @@ never re-introduce raw hex in components.
 
 ## 3. Typography Rules
 
-- **Display / titles:** `Poppins` (600/700) — a geometric sans. Near-zero tracking
-  (`0`) and line-height `1.05`–`1.12`.
+- **Display / titles:** `Poppins` (600/700/800, 800 reserved for the hero H1) — a
+  geometric sans. Near-zero tracking (`0`) and line-height `1.05`–`1.12`.
 - **Italic accent words:** headline emphasis words (the hero rotating word, the
   `em`/`.band-italic` spans, the footer tagline, the case-study pull-quote) stay in
-  `Playfair Display` italic (500/600) — a deliberate serif contrast moment against
-  the Poppins headings, not a general display font.
+  `Playfair Display` italic (500/600/700, 700 reserved for the hero rotating word) —
+  a deliberate serif contrast moment against the Poppins headings, not a general
+  display font.
 - **UI / body:** `Nunito Sans` (300–700).
 - **Fluid scaling** via `clamp()`.
 
@@ -119,6 +120,8 @@ never re-introduce raw hex in components.
   regardless of fill hue, since it overlays photographic/dark backdrops.
 - **Outline button:** translucent paper border on imagery, blur backdrop.
 - **Cards:** 6–10px radius, 1px warm border, hover lifts `-3px` and warms the border.
+- **Panels** (`.os-panel`, `.cta-panel`): 14px radius — a distinct, larger radius
+  than cards, reserved for full-bleed dark/product panels.
 - **Tabs:** baseline-aligned number + label; animated 2px Terracotta underline (`scaleX`);
   step numeral uses `--accent-text` (Deep Moss), not `--accent`, since it's small literal
   text; exposed with full `role="tab"` / `aria-selected` / roving-tabindex keyboard nav.
@@ -136,7 +139,7 @@ never re-introduce raw hex in components.
 
 - **Container:** `max-width: 1240px`, `32px` gutters (`20px` on mobile).
 - **Vertical rhythm:** `~96px` section padding desktop / `60px` mobile; bands and
-  hairlines (`1px #ddd3c0`) separate major sections.
+  hairlines (`1px var(--border)` — Warm Stone `#C9BDAE`) separate major sections.
 - **Grids:** 2-col split panels (`1.1fr 1fr`), 3-col card grids, 4-col metric rows —
   all collapse responsively (3→2→1, 4→2).
 - **Whitespace:** generous; copy measures capped (`44–60ch`) for readability.

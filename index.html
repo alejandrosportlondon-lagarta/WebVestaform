@@ -304,7 +304,7 @@
 .why-cell-trad { padding: 20px 26px; background: var(--card-bg); border-top: 1px solid var(--border); color: var(--text-muted); font-size: 16px; display: flex; align-items: center; gap: 12px; }
 .why-cell-vesta { padding: 20px 26px; background: var(--card-bg-2); border-top: 1px solid var(--border); color: var(--text); font-size: 16px; font-weight: 500; display: flex; align-items: center; gap: 12px; transition: background 0.15s; }
 .why-cell-vesta:hover { background: var(--white); }
-.why-x { color: var(--stone); font-size: 15px; }
+.why-x { color: var(--text-muted); font-size: 15px; }
 .why-check { color: var(--accent-text); font-size: 15px; }
 
 /* Vision */
@@ -796,7 +796,7 @@ const IND_IMGS = [
   'project/images/ind-commercial.png'
 ];
 
-const OS_DOTS = ['#5D7267', '#A8B39A', '#C8D2C0', '#C9BDAE'];
+const OS_DOTS = ['var(--deep-moss)', 'var(--moss)', 'var(--sage)', 'var(--stone)'];
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let lang = 'en';
@@ -1018,6 +1018,7 @@ function renderWord() {
 
 function startWordTimer() {
   if (wordTimer) clearInterval(wordTimer);
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   wordTimer = setInterval(() => {
     wordIdx = (wordIdx + 1) % t().hero.words.length;
     renderWord();

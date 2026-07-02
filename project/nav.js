@@ -54,7 +54,7 @@
         <span class="sep">/</span>
         <button id="btn-es" onclick="setLang('es')" aria-pressed="false" aria-label="Español">ES</button>
       </div>
-      <a href="${home}#contact" class="btn-cta btn-glass" data-i18n="nav.cta"></a>
+      <a href="${home}#contact" class="btn-cta" data-i18n="nav.cta"></a>
       <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
         <span class="nav-toggle-bars"></span>
       </button>
