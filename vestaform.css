@@ -110,7 +110,7 @@ site-nav { display: block; min-height: 60px; }   /* custom elements default to i
 .lang-toggle button {
   background: transparent; border: none; cursor: pointer; padding: 2px 4px;
   font-family: 'Nunito Sans', sans-serif; font-size: 13px; font-weight: 600;
-  transition: color 0.15s; min-height: 40px; min-width: 34px;
+  transition: color 0.15s; min-height: 40px; min-width: 40px;
 }
 .lang-toggle .sep { color: var(--stone); }
 
